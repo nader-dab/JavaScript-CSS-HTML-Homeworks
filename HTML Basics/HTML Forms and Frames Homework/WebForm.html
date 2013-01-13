@@ -1,0 +1,196 @@
+<!doctype html>
+<html>
+<head>
+	<title>Web Form</title>
+	<style type="text/css">	
+		table
+		{border:1px solid #000;}
+		td
+		{
+		border:1px solid #000;
+		}
+		th
+		{
+		border:1px solid #000;
+		text-align:right;
+		}
+
+		tfoot
+		{
+		background:#0f0; 
+		text-align:center;
+		}
+	</style>
+</head>
+<body>
+	<form name="WebForm" method="get" action="WebForm.aspx">
+		<table cellspacing="0">
+			<colgroup>	
+				<col style="width:100px"/>
+			</colgroup>
+			<tfoot>
+				<tr>
+					<td colspan="5">
+						<input type="submit" name="subBtn" value="Submit"/>
+						<input type="reset" name="resBtn" value="Clear This Form"/>
+					</td>
+				</tr>
+			</tfoot>
+			<tbody>
+				<tr>
+					<th>
+						<label for="ln">Last Name</label>
+					</th>
+					<td colspan="4">
+						<input type="text" name="lasttName" id="ln"/>
+					</td>
+				</tr>
+				<tr>
+					<th>
+						<label for="fn">First Name</label>
+					</th>
+					<td colspan="4">
+						<input type="text" name="firstName" id="fn"/>
+					</td>
+				</tr>
+				<tr>
+					<th>
+						<label for="addr">Address</label>
+					</th>
+					<td colspan="4">
+						<textarea name="address" id="addr" cols="30" rows="4"></textarea>
+					</td>
+				</tr>
+				<tr>
+					<th>
+						<label for="ct">City</label>
+					</th>
+					<td>
+					<input type="text" name="city" id="ct"/>
+					</td>
+					<td>
+						<label for="st">State</label>
+					</td>
+					<td>
+						<input type="text" name="state" id="st" size="4"/>
+					</td>	
+				</tr>
+				<tr>
+					<th>
+						<label for="zp">Zip/Postal Code</label>
+					</th>
+					<td colspan="4">
+						<input type="text" name="zip" id="zp"/>
+					</td>
+				</tr>
+				<tr>
+					<th>
+						<label for="co">Country</label>
+					</th>
+					<td colspan="4">
+						<select name="country" id="co">
+							<option value="Value 1"
+								selected="selected">Bulgaria</option>
+							<option value="Value 2">France</option>
+							<option value="Value 3">Germany</option>
+							<option value="Value 4">Spain</option>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<th>
+						<label for="ph">Phone (country codem area code, number)</label>
+					</th>
+					<td colspan="4">(+
+						<input type="text" 
+						size="3" maxlength="3" 
+						required="true" 
+						pattern="[0-9]{3}"/>
+						)
+						<input type="text" 
+						size="3" 
+						maxlength="3" 
+						required="true" 
+						pattern="[0-9]{3}">
+						-
+						<input type="text" 
+						id="ph" 
+						size="12" 
+						maxlength="7" 
+						required="true" 
+						pattern="[0-9]{7}"/>
+					</td>
+				</tr>
+				<tr>
+					<th>
+						<label for="em">E-mail</label>
+					</th>
+					<td colspan="4">
+						<input type="email" name="email" id="em" required="true"/>
+					</td>
+				</tr>
+				<tr>
+					<th>
+						<label for="bd">Birthday</label>
+					</th>
+					<td colspan="4">
+						Month
+						<input type="text" 
+						name="birthday" 
+						id="bd" size="2" 
+						maxlength="2" 
+						required="true" 
+						pattern="(1|2|3|4|5|6|7|8|9|10|11|12)"/>
+						Day
+						<input type="text" 
+						name="birthday" 
+						id="bd" size="2" 
+						maxlength="2"
+						required="true" 
+						pattern="[12]?\d|3[01]"/>
+						Year(4 digit)
+						<input type="text" 
+						name="birthday" 
+						id="bd" size="4" 
+						maxlength="4" 
+						required="true" 
+						pattern="^(19|20)\d{2}$"/>
+					</td>
+				</tr>
+				<tr>
+					<th>
+						<label for="gn">Gender</label>
+					</th>
+					<td colspan="4">
+						<select name="gender" id="gn">
+							<option value="0"
+							selected="selected"></option>
+							<option value="m">Male</option>
+							<option value="f">Female</option>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<th>
+						Starting date
+					</th>
+					<td colspan="4">
+						<input type="radio" name="startDate" id="sp"/>
+						<label for="sp">Spring 2006</label>
+						<input type="radio" name="startDate" id="sm"/>
+						<label for="sm">Summer 2006</label>
+					</td>
+				</tr>
+				<tr>
+					<th>
+						<label for="cq">Comments/Questions</label>
+					</th>
+					<td colspan="4">
+						<textarea name="comments" id="cq" cols="30" rows="4"></textarea>
+					</td>
+				</tr>
+			</tbody>	
+		</table>
+	</form>
+</body>
+</html>

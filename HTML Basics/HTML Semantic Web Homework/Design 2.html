@@ -1,0 +1,124 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Homework Design 2</title>
+</head>
+<body>
+	<header>
+		<h1>
+			<a href="#">LinkedIn</a>
+		</h1>
+		<nav>
+			<ul>
+				<li>
+					<a href="#">
+						Home
+					</a>
+				</li>
+				<li>
+					<a href="#">
+						What is LinkedIn?
+					</a>
+				</li>
+				<li>
+					<a href="#">
+						Join Today
+					</a>
+				</li>
+				<li>
+					<form method="get" action="SingIn.aspx">
+						<fieldset>
+							<legend>Sign In</legend>
+							<ul>
+								<li>
+									<label for="email">Email:</label>
+									<input type="text" id="email"/>
+								</li>
+								<li>
+									<label for="password">Password:</label>
+									<input type="password" id="password"/>
+								</li>
+								<li>
+								<input type="submit" value="Sign In"/>
+								</li>
+							</ul>
+						</fieldset>
+					</form>
+				</li>
+			</ul>
+		</nav>
+		<hr/>
+	</header>
+	<section>
+		<h2>
+			Over 175 million professionals use LinkedIn to exchange information, ideas and opportunities
+		</h2>
+		<ul>
+			<li>
+				Stay informed about your contacts and industry
+			</li>
+			<li>
+				Find the people & knowledge you need to acheive your goals
+			</li>
+			<li>
+				Control your professional identity online
+			</li>
+		</ul>
+	</section>
+	<section>
+		<h3>
+			Join LinkedIn Today
+		</h3>
+		<form method="get" action="SignUp.aspx"> 
+			<fieldset>
+				<legend>Sign Up</legend>
+				<ul>
+					<li>
+						<label for="FirstName">First Name:</label>
+						<br/>
+						<input type="text" id ="FirstName"/>
+					</li>
+					<li>
+						<label for="LastName">Last Name:</label>
+						<br/>
+						<input type="text" id ="LastName"/>
+					</li>
+					<li>
+						<label for="SignUpEmail">Email:</label>
+						<br/>
+						<input type="email" id ="SignUpEmail"/>
+					</li>
+					<li>
+						<label for="SignUpPass">Password:</label>
+						<br/>
+						<input type="password" id ="SignUpPass"/>
+						<br/>
+						<p>6 or more characters</p>
+					</li>
+				</ul>
+				<input type="submit" value="Join Now"/>
+				<p>Already on LinkedIn? <a href="#">Sign in.</a></p>
+			</fieldset>
+		</form>
+	</section>
+	<section>
+		<h4>
+			Search for someone by name:
+		</h4>
+		<form method="get" action="Search.aspx">
+			<ul>
+				<li>
+					<label for="SearchFirstName">First Name</label>
+					<input type="text" id="SearchFirstName"/>
+				</li>
+				<li>
+					<label for="SearchLastName">Last Name</label>
+					<input type="text" id="SearchLastName"/>
+				</li>
+			</ul>
+			<input type="submit" value="Go"/>
+		</form>
+	</section>
+</body>
+</html>

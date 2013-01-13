@@ -1,0 +1,40 @@
+﻿*{
+	margin: 0; 
+	padding: 0;
+}
+table{
+	font-family: Arial;
+	border-spacing: 0;
+}
+th{
+	padding: 5px;
+	background-color: #56B906;
+	color: #FFF;
+	border-bottom: 1px solid #2A7A05;
+	border-right: 1px solid #60C20E;
+	border-left: 1px solid #3A9008;
+	text-align: left;
+}
+tr:nth-child(2n){
+	background-color: #ECECD8;
+}
+tr:nth-child(2){
+	border-top: 1px solid #94B58A;
+}
+td{
+	
+	border-left: 1px solid #C7C5AE;
+	padding: 5px;
+
+}
+.name{
+	width: 150px;
+}
+.city{
+	width: 100px;
+}
+input[type="checkbox"]:disabled{
+	
+}
+
+

@@ -1,0 +1,164 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Caclulator</title>
+	<link rel="stylesheet" type="text/css" href="style.css"/>
+</head>
+<body>
+	<form action>
+		<div class="outerFrame">
+			<div class="topLine">
+				<img src="icons/calc.png" alt="icon" width="11px" heigh="15px"/>
+				<div class="Calc"><span>Calculator</span></div>
+				<div id="min"><a href="#"><img src="icons/minimize.png"  alt="min" width="11px" height="10px"/></a></div><div id="max"><a href="#"><img src="icons/maximize.png" alt="max" width="11px" height="10px"/></a></div><div id="close"><a href="#" ><img src="icons/close.png" alt="close" width="11px" height="10px"/></a>
+			</div>
+			<div class="innerFrame">
+				<div class="topMenu">
+					<ul class="Veh">
+						<li><span>V</span>iew</li>
+						<li><span>E</span>dit</li>
+						<li><span>H</span>elp</li>
+					</ul>
+				</div>
+				<div class="display"><span>8854455</span></div>
+				<div class="binary">
+					<div>
+						<div>0000</div>
+						<div>63<span class="hidden">00</span></div>
+						<div>0000</div>
+						<div>31<span class="hidden">00</span></div>
+					</div>
+					<div>
+						<div>0000</div>
+						<div class="hidden">0</div>
+						<div>0000</div>
+						<div class="hidden">0</div>
+					</div>
+					<div>
+						<div>0000</div>
+						<div class="hidden">0</div>
+						<div>1000</div>
+						<div></div>
+					</div>
+					<div>
+						<div>0000</div>
+						<div class="hidden">0</div>
+						<div>0111</div>
+						<div class="hidden">0</div>
+					</div>
+					<div>
+						<div>0000</div>
+						<div>47</div>
+						<div>0001</div>
+						<div>15</div>
+					</div>
+					<div>
+						<div>0000</div>
+						<div class="hidden">0</div>
+						<div>1011</div>
+						<div class="hidden">0</div>
+					</div>
+					<div>
+						<div>0000</div>
+						<div class="hidden">0</div>
+						<div>1011</div>
+						<div class="hidden">0</div>
+					</div>
+					<div>
+						<div>0000</div>
+						<div>32</div>
+						<div>0111</div>
+						<div>0</div>
+					</div>
+				</div>
+				<div class="upperRows">
+					<div class="topRadio">
+						<ul>
+							<li><input name="topRadio" type="radio" id ="Hex"/><label for="Hex">Hex</label></li>
+							<li><input name="topRadio"type="radio" id ="Dec" checked="checked"/><label for="Hex">Dec</label></li>
+							<li><input name="topRadio"type="radio" id ="Oct"/><label for="Hex">Oct</label></li>
+							<li><input name="topRadio"type="radio" id ="Bin"/><label for="Hex">Bin</label></li>
+						</ul>
+					</div>
+					
+					<div class="row1">
+						<input type="button" class="FirstDisabledButton disabled"  disabled="disabled" value="test"/>
+						<input type="button" value="Mod"/>
+						<input type="button" class="Hex disabled" class="Hex, disabled" value="A" disabled="disabled"/>
+						<input type="button" class="disabled" value="MC" disabled="disabled"/>
+						<input type="button" class="disabled" value="MR" disabled="disabled"/>
+						<input type="button" class="disabled" value="MS" disabled="disabled"/>
+						<input type="button" class="disabled" value="M+" disabled="disabled"/>
+						<input type="button" class="disabled" value="M-" disabled="disabled"/>
+					</div>
+					
+					<div class="row2">
+						<input type="button" value="("/>
+						<input type="button" value=")"/>
+						<input type="button" class="Hex disabled" value="B" disabled="disabled"/>
+						<input type="button" value="←"/>
+						<input type="button" value="CE"/>
+						<input type="button" value="C" />
+						<input type="button" value="±" />
+						<input type="button" class="disabled" value="√" disabled="disabled"/>
+					</div>			
+					<div class="row3">
+						<input type="button" value="RoL"/>
+						<input type="button" value="RoR"/>
+						<input type="button" class="Hex disabled" value="C" disabled="disabled"/>
+						<input type="button" value="7"/>
+						<input type="button" value="8"/>
+						<input type="button" value="9" />
+						<input type="button" value="/" />
+						<input type="button" class="disabled" value="%" disabled="disabled"/>
+					</div>
+				</div>
+				<div class="bottomRows">
+					<div class="bottomRadio">
+						<ul>
+							<li><input name="bottomRadio" type="radio" id ="Qword"checked="checked"/><label for="Qword">Qword</label></li>
+							<li><input name="bottomRadio"type="radio" id ="Dword"/><label for="Dword">Dword</label></li>
+							<li><input  name="bottomRadio"type="radio" id ="Word"/><label for="Word">Word</label></li>
+							<li><input name="bottomRadio"type="radio" id ="Byte"/><label for="Byte">Byte</label></li>
+						</ul>
+					</div>
+					<div class="row4">
+						<input type="button" value="Or"/>
+						<input type="button" value="XoR"/>
+						<input type="button" class="Hex disabled" value="D" disabled="disabled"/>
+						<input type="button" value="4"/>
+						<input type="button" value="5"/>
+						<input type="button" value="6" />
+						<input type="button" value="*" />
+						<input type="button" class="disabled" value="1/x" disabled="disabled"/>
+					</div>
+					<div class="row5 row6">
+						<div>
+							<input type="button" value="Lsh"/>
+							<input type="button" value="Rsh"/>
+							<input type="button" class="Hex disabled" value="E" disabled="disabled"/>
+							<input type="button" value="1"/>
+							<input type="button" value="2"/>
+							<input type="button" value="3" />
+							<input type="button" value="-" />
+						</div>
+						<div>
+							<input type="button" value="Not"/>
+							<input type="button" value="And"/>
+							<input type="button" class="Hex disabled" value="F" disabled="disabled"/>
+							<input id="ZeroButton" type="button"  value="0"/>
+							<input type="button" class="disabled" value="." disabled="disabled"/>
+							<input type="button" value="+"/>
+						</div>
+					</div>
+					<div class="EqualButtonDiv">
+						<input type="button" id="EqualButton" value="="/>
+					</div>
+				</div>	
+				
+			</div>
+			
+		</div>
+	</form>
+</body>
+</html>

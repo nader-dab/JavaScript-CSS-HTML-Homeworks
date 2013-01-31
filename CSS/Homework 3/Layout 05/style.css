@@ -1,0 +1,84 @@
+﻿body, header, nav, ul, li, a, section, div, form, fieldset, legend, img, p, aside, p {
+    margin:0;
+    padding:0;
+}
+body {
+    font-family: Verdana, sans-serif;
+    font-size: 12px;
+}
+.wrapper {
+    border: 1px solid black;
+    border-radius: 5px 0 0 5px;
+    margin: 0 auto;
+    margin-top: 5px;
+    width:42%;
+    height: 370px;
+    overflow: hidden;
+    padding: 5px;
+}
+ul {
+    text-align:center;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+ul li {
+    list-style: none;
+    display:inline;
+}
+a {
+    color: #00abef;
+}
+header {
+    border-bottom: 1px solid black;
+    font-size: 1.6em;
+    width: 95%;
+    margin: 0 auto;
+    margin-bottom: 5px;
+}
+section, .specs, .price, aside {
+    float:left;
+}
+section {
+    border: 1px solid black;
+    overflow: hidden;
+    width: 75%;
+    
+    padding: 5px;
+}
+    section div {
+        width: 48%;
+        overflow: hidden;
+        float: left;
+        margin-left: 5px;
+    }
+legend {
+    padding-left: 15px;
+}
+img {
+    margin-right: 5px;
+}
+.price, .specs {
+    width:45%;
+}
+.specs {
+    margin-top:30px;
+    margin-left: 15px;
+    line-height: 20px;
+}
+aside {
+    width: 21%;
+    height: 250px;
+    margin-left: 10px;
+    margin-top: 30px;
+    overflow: hidden;
+}
+    aside p {
+        display:block;
+        margin-bottom: 20px;
+    }
+    wrapper:after {
+        content:"";
+        display: block;
+        clear: both;
+        height: 0;
+    }

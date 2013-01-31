@@ -1,0 +1,81 @@
+﻿body, section, div, h1, article, img, p {
+    margin:0;
+    padding:0;
+}
+body {
+    background-color: #EEEEEE;
+    font-family: Verdana,san-serif;
+    font-size: 11px;
+}
+h1 {
+    font-size: 16px;
+    font-weight:normal;
+    margin-bottom: 15px;
+}
+.wrapper {
+    border:1px solid black;
+    border-radius: 5px;
+    margin:0 auto;
+    margin-top: 10px;
+    padding: 10px;
+    width: 360px;
+    height:470px;
+    overflow:hidden;
+}
+
+article {
+    border:1px solid #B3B3B3;
+    background-color: white;
+    width: 100%;
+	height: 25%;
+    margin-bottom: 35px;
+    overflow: hidden;
+}
+    article > img {
+        border:1px solid #B3B3B3;
+        margin-left: 15px;
+        margin-top: 17px;
+        margin-right: 15px;
+        float:left;
+             
+    }
+    article > div {
+        float:left;
+    }
+    article > p {
+        display: block;
+        max-height:50px;
+        overflow:hidden;
+        word-break: keep-all;
+        margin-top:15px;
+        margin-bottom: 10px;
+
+    }
+.button {
+    overflow:hidden;
+    position: relative;
+    bottom:0px
+}
+.button:first-of-type {
+    margin-left:50px;
+    margin-right: 5px;
+}
+    .button > img {
+        
+        float:left;
+    }
+    .button > p {
+        color: white;
+        float:left;
+        display:block;
+        line-height: 25px;
+        position: absolute;
+        margin-left: 20px;
+    }
+
+article:after {
+    content:"";
+    display:block;
+    clear:both;
+    height:0;
+}

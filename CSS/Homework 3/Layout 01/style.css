@@ -1,0 +1,28 @@
+﻿ul 
+{
+    list-style-type: none;
+	padding-left: 15px;
+}
+a 
+{
+    text-decoration: none;
+}
+    .main-list a
+    {
+        color: black;
+		
+    }
+    .sub-list a {
+
+        color:gray;
+    }
+.sub-list {
+    display: none;
+}
+    .main-list li:hover >a {
+        text-decoration: underline;
+
+    }
+    .main-list li:hover>.sub-list {
+        display:block;
+    }

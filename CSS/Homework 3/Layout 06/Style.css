@@ -1,0 +1,76 @@
+﻿div, body, header, nav, ul, li, section, article, p, img{
+    margin:0;
+    padding:0;
+}
+body{
+    font-family: Verdana, sans-serif;
+    font-size: 14px;
+    background-color: #343434;
+}
+.wrapper {
+    border: 2px solid #295a68;
+    border-radius: 5px;
+    margin: 0 auto;
+    margin-top: 5px;
+    width: 45%;
+    height:350px;
+    background-color: #1e3741;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+nav ul{
+    list-style:none;
+}
+    nav li {
+        margin: 1px;
+        float: left;
+    }
+    nav a {
+        color: #6a94b3;
+        border-spacing: 0 0;
+        font-weight: bold;
+        font-size: 0.9em;
+        display: block;
+        background-color: #4b5f67;
+        text-decoration: none;
+        padding:0 10px;
+    }
+        li:first-of-type > a {
+            background-color: transparent;
+            color:white;
+        }
+        li:nth-of-type(2) > a {
+            text-decoration: underline;
+        }
+nav {
+    height: 35px;
+    line-height: 35px;
+    margin-bottom: 15px;
+}
+article{
+    font-weight: bold;
+    font-size: 0.9em;
+    color: #97948b;
+}
+    article p {
+        display: block;
+        border-top: 1px solid #324851;
+        border-top: 1px solid #324851;
+        height: 50px;
+        width: 40%;
+        padding-left: 5px;
+        vertical-align: central;
+        float:left;
+    }
+        article:first-of-type p{
+            background-color: #00968c;
+
+            color: white;
+        }
+ul, article {
+    content:"";
+    display:block;
+    clear: both;
+    height:0;
+}

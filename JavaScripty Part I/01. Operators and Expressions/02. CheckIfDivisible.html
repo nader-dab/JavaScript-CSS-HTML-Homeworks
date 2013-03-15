@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>JS Console - Example</title>
+	<link href="styles/js-console.css" rel="stylesheet" />
+</head>
+<body>
+	<label for="tb-number">Number: </label>
+	<input type="text" id="tb-number" />
+	<br />
+	<a href="#" onclick="checkDivisibility()">Check if divisible by 5 and 7</a>
+	<div id="console">
+	</div>
+	<script src="scripts/js-console.js">	  
+	</script>
+	<script>
+		function checkDivisibility() {
+			var number = jsConsole.readInteger("#tb-number");
+			if (number % 5 == 0 && number % 7 == 0) {
+				jsConsole.writeLine("The number " + number + " is divisible by 5 and 7")
+			}
+			else {
+				jsConsole.writeLine("The number " + number + " is not divisible by 5 and 7")
+			}
+		}
+	</script>
+</body>
+</html>

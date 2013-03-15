@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>JS Console - Example</title>
+	<link href="styles/js-console.css" rel="stylesheet" />
+</head>
+<body>
+	<label for="tb-number">Number: </label>
+	<input type="text" id="tb-number" />
+
+	<br />
+	<a href="#" onclick="checkBit()">Check third bit</a>
+	<div id="console">
+	</div>
+	<script src="scripts/js-console.js">	  
+	</script>
+	<script>
+		function checkBit() {
+			var number = jsConsole.readInteger("#tb-number");
+			number = number >> 2;
+			number = number & 1;
+			jsConsole.writeLine("The third bit is: " + number);
+		}
+	</script>
+</body>
+</html>

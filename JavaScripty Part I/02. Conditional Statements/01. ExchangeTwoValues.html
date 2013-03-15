@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>JS Console - Example</title>
+	<link href="styles/js-console.css" rel="stylesheet" />
+</head>
+<body>
+	<label for="tb-numberOne">First Number: </label>
+	<input type="text" id="tb-numberOne" />
+	<label for="tb-numberTwo">Second Number: </label>
+	<input type="text" id="tb-numberTwo" />
+	<br />
+	<a href="#" onclick="onEvenOddButtonClick()">Swap</a>
+	<div id="console">
+	</div>
+	<script src="scripts/js-console.js">	  
+	</script>
+	<script>
+		function onEvenOddButtonClick() {
+			var numberOne = jsConsole.readInteger("#tb-numberOne");
+			var numberTwo = jsConsole.readInteger("#tb-numberTwo");
+			if (numberOne > numberTwo) {
+				var swap = numberOne;
+				numberOne = numberTwo;
+				numberTwo = swap;
+				
+				jsConsole.writeLine("First number: " + numberOne + " Second number: " + numberTwo);
+			}
+			else {
+				jsConsole.writeLine("First number: " + numberOne + " Second number: " + numberTwo);
+			}
+		}
+	</script>
+</body>
+</html>

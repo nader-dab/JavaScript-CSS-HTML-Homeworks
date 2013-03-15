@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>JS Console - Example</title>
+	<link href="styles/js-console.css" rel="stylesheet" />
+</head>
+<body>
+	<label for="tb-numberOne">a: </label>
+	<input type="text" id="tb-numberOne" />
+	<label for="tb-numberTwo">b: </label>
+	<input type="text" id="tb-numberTwo" />
+	<label for="tb-numberThree">c: </label>
+	<input type="text" id="tb-numberThree" />
+	<label for="tb-numberFour">d: </label>
+	<input type="text" id="tb-numberFour" />
+	<label for="tb-numberFive">e: </label>
+	<input type="text" id="tb-numberFive" />
+	<br />
+	<a href="#" onclick="solveQuadraticEquation()">Find max</a>
+	<div id="console">
+	</div>
+	<script src="scripts/js-console.js">	  
+	</script>
+	<script>
+		function solveQuadraticEquation() {
+			var a = jsConsole.readInteger("#tb-numberOne");
+			var b = jsConsole.readInteger("#tb-numberTwo");
+			var c = jsConsole.readInteger("#tb-numberThree");
+			var d = jsConsole.readInteger("#tb-numberFour");
+			var e = jsConsole.readInteger("#tb-numberFive");
+
+			jsConsole.writeLine(Math.max(a, b, c, d, e));
+		}
+	</script>
+</body>
+</html>

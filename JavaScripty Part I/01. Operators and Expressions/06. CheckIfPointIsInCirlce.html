@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>JS Console - Example</title>
+	<link href="styles/js-console.css" rel="stylesheet" />
+</head>
+<body>
+	<label for="tb-positionX">Position X: </label>
+	<input type="text" id="tb-positionX" />
+
+	<label for="tb-positionY">Position Y: </label>
+	<input type="text" id="tb-positionY" />
+	
+	<br />
+	<a href="#" onclick="checkBit()">Check if Point is in Cirlce</a>
+	<div id="console">
+	</div>
+	<script src="scripts/js-console.js">	  
+	</script>
+	<script>
+		function checkBit() {
+			var positionX = jsConsole.readInteger("#tb-positionX");
+			var positionY = jsConsole.readInteger("#tb-positionY");
+			
+			if ((positionX <= 5 && positionX >= -5) && (positionY <= 5 && positionY >= -5)) {
+				jsConsole.writeLine("Point is inside the cirlce");
+			}
+			else{
+				jsConsole.writeLine("Point is Not inside the cirlce");
+			}
+		}
+	</script>
+</body>
+</html>

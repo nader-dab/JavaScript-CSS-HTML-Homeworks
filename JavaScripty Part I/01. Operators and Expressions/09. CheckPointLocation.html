@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>JS Console - Example</title>
+	<link href="styles/js-console.css" rel="stylesheet" />
+</head>
+<body>
+	<label for="tb-positionX">position X: </label>
+	<input type="text" id="tb-positionX" />
+	
+	<label for="tb-positionY">position Y: </label>
+	<input type="text" id="tb-positionY" />
+
+	<br />
+	<a href="#" onclick="calcArea()">Check Point Location</a>
+	<div id="console">
+	</div>
+	<script src="scripts/js-console.js">	  
+	</script>
+	<script>
+		function calcArea() {
+			var positionX = jsConsole.readInteger("#tb-positionX");
+			var positionY = jsConsole.readInteger("#tb-positionY");
+			if ((positionX <= 4 && positionX >= -2) && (positionY <= 4 && positionY >= -2)) {
+				if ((positionX <= 5 && positionX >= -1) && (positionY <= 1 && positionY >= -1)) {
+					jsConsole.writeLine("Point is in Circle(1,1) and radius 3 and in Rectangle");
+				}
+				else {
+					jsConsole.writeLine("Point is in Circle(1,1) and radius 3 and outside the Rectangle");
+				}
+			}
+			else {
+				jsConsole.writeLine("Point is NOT in Circle and Rectangle");
+			}
+		}
+	</script>
+</body>
+</html>

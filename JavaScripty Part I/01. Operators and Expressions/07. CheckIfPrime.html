@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>JS Console - Example</title>
+	<link href="styles/js-console.css" rel="stylesheet" />
+</head>
+<body>
+	<label for="tb-number">Number: </label>
+	<input type="text" id="tb-number" />
+
+	<br />
+	<a href="#" onclick="checkIfPrime()">Check if prime</a>
+	<div id="console">
+	</div>
+	<script src="scripts/js-console.js">	  
+	</script>
+	<script>
+		function checkIfPrime() {
+			var number = jsConsole.readInteger("#tb-number");
+			var foundPrime = false;
+			for(i = 2; i<= Math.sqrt(number); i++){
+				if(number % i == 0){
+					jsConsole.writeLine("Number is Not Prime ");
+					foundPrime = true;
+					break;
+				}
+			}
+			
+			if(foundPrime == false){
+				jsConsole.writeLine("Number is Prime ");
+			}
+			
+		}
+	</script>
+</body>
+</html>

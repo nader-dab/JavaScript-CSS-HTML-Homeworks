@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>JS Console - Example</title>
+	<link href="styles/js-console.css" rel="stylesheet" />
+</head>
+<body>
+	<label for="tb-numberOne">First Number: </label>
+	<input type="text" id="tb-numberOne" />
+	<label for="tb-numberTwo">Second Number: </label>
+	<input type="text" id="tb-numberTwo" />
+	<label for="tb-numberThree">Third Number: </label>
+	<input type="text" id="tb-numberThree" />
+	<br />
+	<a href="#" onclick="onSortClick()">Sort numbers</a>
+	<div id="console">
+	</div>
+	<script src="scripts/js-console.js">	  
+	</script>
+	<script>
+		function onSortClick() {
+			var numberOne = jsConsole.readInteger("#tb-numberOne");
+			var numberTwo = jsConsole.readInteger("#tb-numberTwo");
+			var numberThree = jsConsole.readInteger("#tb-numberThree");
+			
+			if(numberOne >= numberTwo && numberOne >= numberThree){
+				if(numberTwo >= numberThree){
+					jsConsole.writeLine( numberOne + " " + numberTwo + " " + numberThree);
+				}
+				else{
+					jsConsole.writeLine( numberOne + " " + numberThree + " " + numberTwo );
+				}
+			}
+			else if(numberTwo >= numberOne && numberTwo >= numberThree){
+				if(numberOne >= numberThree){
+					jsConsole.writeLine( numberTwo + " " + numberOne + " " +  numberThree);
+				}
+				else{
+					jsConsole.writeLine( numberTwo + " " + numberThree + " " + numberOne );
+				}
+			}
+			else if(numberThree >= numberOne && numberThree >= numberTwo){
+				if(numberOne >= numberTwo){
+					jsConsole.writeLine( numberThree + " " + numberOne + " " +  numberTwo);
+				}
+				else{
+					jsConsole.writeLine( numberThree + " " + numberTwo + " " + numberOne );
+				}
+			}
+		}
+	</script>
+</body>
+</html>

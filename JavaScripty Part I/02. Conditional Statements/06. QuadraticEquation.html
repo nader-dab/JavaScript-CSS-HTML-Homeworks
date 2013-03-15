@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>JS Console - Example</title>
+	<link href="styles/js-console.css" rel="stylesheet" />
+</head>
+<body>
+	<label for="tb-numberOne">a: </label>
+	<input type="text" id="tb-numberOne" />
+	<label for="tb-numberTwo">b: </label>
+	<input type="text" id="tb-numberTwo" />
+	<label for="tb-numberThree">c: </label>
+	<input type="text" id="tb-numberThree" />
+	<br />
+	<a href="#" onclick="solveQuadraticEquation()">Find roots</a>
+	<div id="console">
+	</div>
+	<script src="scripts/js-console.js">	  
+	</script>
+	<script>
+		function solveQuadraticEquation() {
+			var a = jsConsole.readInteger("#tb-numberOne");
+			var b = jsConsole.readInteger("#tb-numberTwo");
+			var c = jsConsole.readInteger("#tb-numberThree");
+			var d = b * b - 4 * a * c; 
+			
+			if(d > 0){
+				var x1 = (-b + Math.sqrt(d)) / (2 * a);
+				var x2 = (b + Math.sqrt(d)) / (2 * a);
+				jsConsole.writeLine("The root are x1 = " + x1 + " and x2 = " + x2);
+			}
+			
+			else if(d == 0){
+				var x =  (-b) / (2 * a);
+				jsConsole.writeLine("The root is x = " + x);
+			}
+			
+			else{
+				jsConsole.writeLine("The are no roots.");
+			}
+
+			
+			
+		}
+	</script>
+</body>
+</html>

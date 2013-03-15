@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>JS Console - Example</title>
+	<link href="styles/js-console.css" rel="stylesheet" />
+</head>
+<body>
+	<label for="tb-width">Widht: </label>
+	<input type="text" id="tb-width" />
+	
+	<label for="tb-heigth">Heigth: </label>
+	<input type="text" id="tb-heigth" />
+
+	<br />
+	<a href="#" onclick="calcArea()">Calculate rectangle area</a>
+	<div id="console">
+	</div>
+	<script src="scripts/js-console.js">	  
+	</script>
+	<script>
+		function calcArea() {
+			var width = jsConsole.readInteger("#tb-width");
+			var heigth = jsConsole.readInteger("#tb-heigth");
+			var area = width * heigth;
+			jsConsole.writeLine("The area of the triangle is: " + area);
+		}
+	</script>
+</body>
+</html>

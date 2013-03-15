@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>JS Console - Example</title>
+	<link href="styles/js-console.css" rel="stylesheet" />
+</head>
+<body>
+	<label for="tb-number">Number: </label>
+	<input type="text" id="tb-number" />
+
+	<br />
+	<a href="#" onclick="checkDigit()">Check if third digit is 7</a>
+	<div id="console">
+	</div>
+	<script src="scripts/js-console.js">	  
+	</script>
+	<script>
+		function checkDigit() {
+			var number = jsConsole.readInteger("#tb-number");
+			number = parseInt(number / 100);
+			number = number % 10;
+			jsConsole.writeLine("The third digit is 7 : " + (number == 7));
+		}
+	</script>
+</body>
+</html>

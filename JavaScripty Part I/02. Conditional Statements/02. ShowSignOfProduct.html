@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>JS Console - Example</title>
+	<link href="styles/js-console.css" rel="stylesheet" />
+</head>
+<body>
+	<label for="tb-numberOne">First Number: </label>
+	<input type="text" id="tb-numberOne" />
+	<label for="tb-numberTwo">Second Number: </label>
+	<input type="text" id="tb-numberTwo" />
+	<label for="tb-numberThree">Third Number: </label>
+	<input type="text" id="tb-numberThree" />
+	<br />
+	<a href="#" onclick="onEvenOddButtonClick()">Show Product sign</a>
+	<div id="console">
+	</div>
+	<script src="scripts/js-console.js">	  
+	</script>
+	<script>
+		function onEvenOddButtonClick() {
+			var numberOne = jsConsole.readInteger("#tb-numberOne");
+			var numberTwo = jsConsole.readInteger("#tb-numberTwo");
+			var numberThree = jsConsole.readInteger("#tb-numberThree");
+			var minuses = 0;
+			
+			if(numberOne < 0){
+				minuses++;
+			}
+			if(numberTwo < 0){
+				minuses++;
+			}
+			if(numberThree < 0){
+				minuses++;
+			}
+			
+			if (minuses % 2 == 0) {
+				jsConsole.writeLine("The product will be +");
+			}
+			else {
+				jsConsole.writeLine("The product will be -");
+			}
+		}
+	</script>
+</body>
+</html>

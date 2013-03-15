@@ -17,8 +17,8 @@
 		function onDigitClick() {
 			var number = jsConsole.readInteger("#tb-number");
 			
-			if(number >= 100){
-				jsConsole.writeLine(getHundred(number) + " " + GetTens(number) + " " + GetOnes(number));
+			if(number >= 100 && number < 1000){
+				jsConsole.writeLine(GetOnes(parseInt(number / 100)) + " hundred " + GetTens(number) + " " + GetOnes(number));
 			}
 			else if(number >= 20 && number < 100){
 				jsConsole.writeLine(GetTens(number) + " " + GetOnes(number));
@@ -29,8 +29,11 @@
 			else if(number > 0 && number < 10){
 				jsConsole.writeLine(GetOnes(number));
 			}
-			else{
+			else if(number == 0){
 				jsConsole.writeLine("zero");
+			}
+			else{
+				jsConsole.writeLine("Incorect input");
 			}
 		}
 		
@@ -56,7 +59,7 @@
 		
 		function GetTens(number){
 			var result = "";
-			var notTeens = false;
+			var isTeens = true;
 			switch (number % 100) {
 				case 10: result = "ten"; break;
 				case 11: result = "eleven"; break;
@@ -64,7 +67,7 @@
 				case 13: result = "thirtheen"; break;
 				case 14: result = "fourtheen"; break;
 				case 15: result = "fiftheen"; break;
-				case 16: result = "sixtheen"; break;
+				case 16: result = "sixteen"; break;
 				case 17: result = "seventeen"; break;
 				case 18: result = "eighteen"; break;
 				case 19: result = "nineteen"; break;
@@ -72,7 +75,7 @@
 			}
 			
 			if(result == ""){
-				notTeens = true;
+				isTeens = false;
 			}
 			
 			switch (parseInt(number / 10) % 10){
@@ -86,26 +89,11 @@
 				case 9: result = "ninety"; break;
 			}
 			
-			if(parseInt(number/100) != 0 && result != "" && notTeens == false){
+			if(parseInt(number/100) != 0 && result != "" && isTeens == true){
 				result = "and " + result;
 			}
 			
 			return result;
-		}
-		
-		function getHundred(number){
-			switch (parseInt(number / 100)) {
-				case 1: return "one hundred"; 
-				case 2: return "two hundred"; 
-				case 3: return "three hundred"; 
-				case 4: return "four hundred";
-				case 5: return "five hundred"; 
-				case 6: return "six hundred";
-				case 7: return "seven hundred"; 
-				case 8: return "eight hundred"; 
-				case 9: return "nine hundred";
-				default: return "";
-			}
 		}
 	</script>
 </body>

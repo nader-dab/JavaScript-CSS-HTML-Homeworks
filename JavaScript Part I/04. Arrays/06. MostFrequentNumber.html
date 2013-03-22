@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>JS Console - Example</title>
+	<link href="styles/js-console.css" rel="stylesheet" />
+</head>
+<body>
+	<div id="console">
+	</div>
+	<script src="scripts/js-console.js">	  
+	</script>
+	<script>
+		var array = [3, 2, 44, 2, 2, 4, 12, 2, 34, 23, 13, 8, 2, 2, 5, 6, 7];
+
+		var mostFrequentNumber = 0;
+        var maxFrequency = 0;
+		var frequency = 0;
+		var checkNumber = 0;
+		var index1 = 0;
+		var index2 = 0;
+        for (index1 = 0; index1 < array.length; index1++)
+        {
+            checkNumber = array[index1];
+            frequency = 0;
+            for (index2 = index1; index2 < array.length; index2++)
+            {
+                if (checkNumber == array[index2])
+                {
+                    frequency++;
+                }
+            }
+            if (frequency > maxFrequency)
+            {
+                maxFrequency = frequency;
+                mostFrequentNumber = checkNumber;
+            }
+        }
+		
+        jsConsole.writeLine("Number: " + mostFrequentNumber + " Times met: " + maxFrequency);
+
+
+	</script>
+</body>
+</html>

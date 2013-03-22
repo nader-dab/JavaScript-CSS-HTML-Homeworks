@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>JS Console - Example</title>
+	<link href="styles/js-console.css" rel="stylesheet" />
+</head>
+<body>
+	<div id="console">
+	</div>
+	<script src="scripts/js-console.js">	  
+	</script>
+	<script>
+		var arrayOne = ['a', 'b', 'b', 'd'];
+		var arrayTwo = ['a', 'b', 'b', 'd', 'b'];
+		var arrayThree;
+		var index = 1;
+		for(index = 0; index < Math.min(arrayOne.length, arrayTwo.length); index ++){
+			if(arrayOne[index] > arrayTwo[index]){
+				arrayThree = arrayOne;
+				break;
+			} 
+			else if(arrayOne[index] < arrayTwo[index]){
+				arrayThree = arrayTwo;
+				break;
+			}
+			else if(index == Math.min(arrayOne.length, arrayTwo.length)- 1){
+				if(arrayOne.length > arrayTwo.length){
+				
+					arrayThree = arrayOne;
+				}
+				else{
+					arrayThree = arrayTwo;
+				}
+			}
+		}
+		jsConsole.writeLine("Array one: " + arrayOne.join(" "));
+		jsConsole.writeLine("Array two: " + arrayTwo.join(" "));
+		jsConsole.writeLine("The lexicographically bigger array is: " + arrayThree.join(" "));
+
+	</script>
+</body>
+</html>

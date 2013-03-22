@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>JS Console - Example</title>
+	<link href="styles/js-console.css" rel="stylesheet" />
+</head>
+<body>
+	<div id="console">
+	</div>
+	<script src="scripts/js-console.js">	  
+	</script>
+	<script>
+		var documentLength = document.toString().length;
+		var windowLength = window.toString().length;
+		var navigatorLength = navigator.toString().length;
+		
+		if(documentLength > windowLength && documentLength > navigatorLength){
+			jsConsole.writeLine("Max length object is document: " + documentLength);
+		}
+		if(windowLength > documentLength && windowLength > navigatorLength){
+			jsConsole.writeLine("Max length object is window: " + windowLength);
+		}
+		if(navigatorLength > documentLength && navigatorLength > windowLength){
+			jsConsole.writeLine("Max length object is navigator: " + navigatorLength);
+		}
+
+		if(documentLength < windowLength && documentLength < navigatorLength){
+			jsConsole.writeLine("Min length object is document: " + documentLength);
+		}
+		if(windowLength < documentLength && windowLength < navigatorLength){
+			jsConsole.writeLine("Min length object is window: " + windowLength);
+		}
+		if(navigatorLength < documentLength && navigatorLength < windowLength){
+			jsConsole.writeLine("Min length object is navigator: " + navigatorLength);
+		}
+	</script>
+</body>
+</html>

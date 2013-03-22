@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>JS Console - Example</title>
+	<link href="styles/js-console.css" rel="stylesheet" />
+</head>
+<body>
+	<div id="console">
+	</div>
+	<script src="scripts/js-console.js">	  
+	</script>
+	<script>
+		var array = [3, 2, 44, 2, 2, 4, 1234, 23, 13, 8, 5, 6, 7];
+		var index1 = 0;
+		var index2 = 0;
+		var minElement = 0;
+		var positionOfMin = 0;
+		var swap = 0;
+		
+		for (index1 = 0; index1 < array.length; index1++){
+            minElement = Number.MAX_VALUE;
+            positionOfMin = index1;
+            for (index2 = index1; index2 < array.length; index2++){
+                if (array[index2] < minElement){
+                    minElement = array[index2];
+                    positionOfMin = index2;
+                }  
+            }
+            swap = array[index1];
+            array[index1] = minElement;
+            array[positionOfMin] = swap;
+        }
+		var index = 0;
+		for(index = 0; index < array.length; index++){
+			jsConsole.write(array[index] + " ");
+		}
+
+	</script>
+</body>
+</html>

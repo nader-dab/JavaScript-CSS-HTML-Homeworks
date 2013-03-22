@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>JS Console - Example</title>
+	<link href="styles/js-console.css" rel="stylesheet" />
+</head>
+<body>
+	<div id="console">
+	</div>
+	<script src="scripts/js-console.js">	  
+	</script>
+	<script>
+		var array = [3, 2, 3, 4, 2, 2, 4];
+		var maxIncreasingSequence;
+		var index = 0;
+		
+		var start = 0;
+		var length = 1;
+		var bestStart = 0;
+		var bestLength = 1;
+		
+		for (index = 1; index < array.length; index++)
+        {
+            if (array[index - 1] == array[index] - 1)
+            {
+                length++;
+            }
+
+            if (array[index - 1] != array[index] - 1 || index == array.length - 1)
+            {
+                if (length > bestLength)
+                {
+                    bestLength = length;
+                    bestStart = start;
+                }
+                start = index;
+                length = 1;
+            }
+        }
+		
+		for(index = 0; index < bestLength; index++){
+			jsConsole.write(array[index + bestStart] + " ");
+		}
+
+	</script>
+</body>
+</html>

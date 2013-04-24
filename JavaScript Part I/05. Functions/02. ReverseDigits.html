@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>JS Console - Example</title>
+	<link href="styles/js-console.css" rel="stylesheet" />
+</head>
+<body>
+	<label for="tb-number">Enter number:</label>
+	<input type="text" id="tb-number" />
+	<br />
+	<a href="#" onclick="onEvenButtonClick()">Reverse digits</a>
+	<div id="console">
+	</div>
+	<script src="scripts/js-console.js">	  
+	</script>
+	<script>
+		function onEvenButtonClick(){
+			var input = jsConsole.readInteger("#tb-number");
+			jsConsole.writeLine("Reversed: " + getReverseDigit(input));
+		}
+		
+		function getReverseDigit(number){
+			if(typeof(number)!= "number"){
+				return "not a number!"
+			}
+			
+			var reversed = 0;
+			while(number != 0){
+				reversed = reversed * 10;
+				reversed += number % 10;
+				number = parseInt(number / 10);
+			}
+			
+			return reversed;
+		}
+	</script>
+</body>
+</html>

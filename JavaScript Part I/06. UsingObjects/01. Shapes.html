@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>JS Console - Example</title>
+	<link href="styles/js-console.css" rel="stylesheet" />
+</head>
+<body>
+	<div id="console">
+	</div>
+	<script src="scripts/js-console.js">	  
+	</script>
+	<script>
+	    function buildPoint(coordX, coordY) {
+	        return {
+	            coordX: coordX,
+	            coordY: coordY,
+	            toString: function () {
+	                return "{ X: " + this.coordX + ", Y: " + this.coordY +"}";
+	            }
+	        }
+	    }
+
+	    function calcPointDistance(p1, p2) {
+	        var horizontalDistance = p1.coordX - p2.coordX;
+	        var verticalDistance = p1.coordY - p2.coordY;
+	        if (horizontalDistance == 0 || verticalDistance == 0) {
+	            return Math.abs(horizontalDistance + verticalDistance);
+	        }
+	        else {
+	            return Math.sqrt(horizontalDistance * verticalDistance);
+	        }
+	    }
+
+	    function buildLine(p1, p2) {
+	        return {
+	            point1: p1,
+	            point2: p2,
+	            length: calcPointDistance(p1, p2),
+	            toString: function (){
+	                return "{ P1: " +this.point1 + ", P2: " + this.point2 + " }";
+	            }
+	        }
+	    }
+
+	    function checkForTriangle(l1, l2, l3) {
+	        if ((l1.length < l2.length + l3.length) &&
+                (l2.length < l1.length + l3.length) &&
+                (l3.length < l1.length + l2.length)) {
+	            return true;
+	        }
+	        else {
+	            return false;
+	        }
+	    }
+
+	    var point = buildPoint(1, 1);
+	    var line1 = buildLine(point, buildPoint(4, 5));
+	    var line2 = buildLine(point, buildPoint(1, 5));
+	    var line3 = buildLine(buildPoint(4, 5), buildPoint(1, 5));
+
+	    jsConsole.writeLine("Point " + point);
+	    jsConsole.writeLine("Line1: " + line1 + " Length: " + line1.length);
+	    jsConsole.writeLine("Line2: " + line2 + " Length: " + line2.length);
+	    jsConsole.writeLine("Line3: " + line3 + " Length: " + line3.length);
+	    jsConsole.writeLine("Form a triangle: " + checkForTriangle(line1, line2, line3));
+	</script>
+</body>
+</html>

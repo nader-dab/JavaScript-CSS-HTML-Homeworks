@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>JS Console - Example</title>
+	<link href="styles/js-console.css" rel="stylesheet" />
+</head>
+<body>
+	<div id="console">
+	</div>
+	<script src="scripts/js-console.js">	  
+	</script>
+	<script>
+	    function buildPoint(coordX, coordY) {
+	        return {
+	            coordX: coordX,
+	            coordY: coordY,
+	            toString: function () {
+	                return "{ X: " + this.coordX + ", Y: " + this.coordY + "}";
+	            }
+	        }
+	    }
+
+	    function buildLine(p1, p2) {
+	        return {
+	            point1: p1,
+	            point2: p2,
+	            toString: function () {
+	                return "{ P1: " + this.point1 + ", P2: " + this.point2 + " }";
+	            }
+	        }
+	    }
+
+	    //Deep Copy
+	    function clone(obj) {
+	        if (obj == null || typeof(obj) != 'object') {
+	            return obj;
+	        }
+	        var temp = new obj.constructor();
+	        for (var key in obj) {
+	            temp[key] = clone(obj[key]);
+	        }
+	        return temp;
+	    }
+
+	    var point = buildPoint(1, 1);
+	    var line1 = buildLine(point, buildPoint(4, 5));
+	    var line2 = clone(line1);
+
+	    line2.point2 = point;
+	    jsConsole.writeLine("Line1: " + line1);
+	    jsConsole.writeLine("Line2: " + line2);
+	</script>
+</body>
+</html>

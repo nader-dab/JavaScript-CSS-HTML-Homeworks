@@ -1,0 +1,45 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>JS Console - Example</title>
+	<link href="styles/js-console.css" rel="stylesheet" />
+</head>
+<body>
+    <label for="tb-text">Enter URl Address</label>
+    <input type ="text" id="tb-text"/>
+    <input type ="button" id="tb-button" value="extract elements" onclick="onClickButton()" />
+	<div id="console">
+	</div>
+	<script src="scripts/js-console.js">	  
+	</script>
+	<script>
+	    function onClickButton() {
+	        var address = jsConsole.read('#tb-text');
+            var addressInfo = parseAddress(address);
+	        
+            jsConsole.writeLine(addressInfo);
+	    }
+
+	    function parseAddress(address) {
+	        
+	        var protocolDashes = "://";
+	        var indexOfProtocol = address.indexOf(protocolDashes);
+	        var protocol = address.substring(0, indexOfProtocol);
+	        var choppedAddress = address.substring(indexOfProtocol + protocolDashes.length);
+	        var indexOfServer = choppedAddress.indexOf('/');
+	        var server = choppedAddress.substring(0, indexOfServer);
+	        var resource = choppedAddress.substring(indexOfServer);
+
+	        return {
+	            protocol: protocol,
+	            server: server,
+	            resource: resource,
+	            toString: function () {
+	                return "Protocol: " + this.protocol + "<br\>Server: " + this.server + "<br\>Resource: " + this.resource;
+	            }
+	        }
+	    }
+
+	</script>
+</body>
+</html>

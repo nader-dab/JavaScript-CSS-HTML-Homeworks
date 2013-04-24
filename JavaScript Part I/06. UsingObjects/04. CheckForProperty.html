@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>JS Console - Example</title>
+	<link href="styles/js-console.css" rel="stylesheet" />
+</head>
+<body>
+	<div id="console">
+	</div>
+	<script src="scripts/js-console.js">	  
+	</script>
+	<script>
+	    function buildPoint(coordX, coordY) {
+	        return {
+	            coordX: coordX,
+	            coordY: coordY,
+	            toString: function () {
+	                return "{ X: " + this.coordX + ", Y: " + this.coordY + "}";
+	            }
+	        }
+	    }
+
+	    function buildLine(p1, p2) {
+	        return {
+	            point1: p1,
+	            point2: p2,
+	            toString: function () {
+	                return "{ P1: " + this.point1 + ", P2: " + this.point2 + " }";
+	            }
+	        }
+	    }
+
+	    function hasProperty(obj, property) {
+	        if (obj[property]) {
+	            return true;
+	        }
+	        else {
+	            return false;
+	        }
+	    }
+	    
+	    var point = buildPoint(1, 1);
+	    var line1 = buildLine(point, buildPoint(4, 5));
+
+	    jsConsole.writeLine("Check for property point1: " + hasProperty(line1, "point1"));
+	    jsConsole.writeLine("Check for property Gosho: " + hasProperty(line1, "Gosho"));
+	</script>
+</body>
+</html>

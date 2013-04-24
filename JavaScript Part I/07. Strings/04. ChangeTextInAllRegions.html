@@ -1,0 +1,68 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>JS Console - Example</title>
+	<link href="styles/js-console.css" rel="stylesheet" />
+</head>
+<body>
+    <textarea id="tb-text" rows="20" cols="50"></textarea>
+    <input type ="button" id="tb-button" value="change text" onclick="onClickButton()" />
+	<div id="console">
+	</div>
+	<script src="scripts/js-console.js">	  
+	</script>
+	<script>
+	    function onClickButton() {
+	        var text = jsConsole.read('#tb-text');
+	        var changed = changeText(text);
+	        
+	        jsConsole.writeLine(changed);
+	    }
+
+	    String.prototype.toMixCase = function () {
+	        var text = String(this);
+	        var index = 0;
+	        var randonCaseStr = "";
+	        for (index = 0; index < text.length; index++) {
+	            if (Math.floor(Math.random() * 2) === 1) {
+	                randonCaseStr += text[index].toUpperCase();
+	            }
+	            else {
+	                randonCaseStr += text[index].toLowerCase();
+	            }
+	        }
+	        return randonCaseStr;
+	    }
+
+	    function changeText(text) {
+
+	        text = CaseChange(text, '<upcase>', '</upcase>', 'toUpperCase');
+	        text = CaseChange(text, '<lowcase>', '</lowcase>', 'toLowerCase');
+	        text = CaseChange(text, '<mixcase>', '</mixcase>', 'toMixCase');
+	        return text;
+	    }
+
+	    function CaseChange(text, tagOpen, tagClose, toCaseFunction) {
+
+	        var indexOpen = text.indexOf(tagOpen, text.toLowerCase());      
+	        var indexClose= text.indexOf(tagClose, text.toLowerCase());
+	        var modifiedText = "";
+
+	        while (indexOpen >= 0) {
+
+	            modifiedText = text.substring(0, indexOpen);
+	            modifiedText += text.substring(indexOpen + tagOpen.length, indexClose)[toCaseFunction]();
+	            modifiedText += text.substring(indexClose + tagClose.length, text.length);
+
+	            text = modifiedText;
+
+	            indexOpen = text.indexOf(tagOpen, text.toLowerCase());
+	            indexClose = text.indexOf(tagClose, text.toLowerCase());
+	        }
+
+	        return modifiedText;
+	    }
+
+	</script>
+</body>
+</html>

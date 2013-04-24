@@ -1,0 +1,58 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>JS Console - Example</title>
+	<link href="styles/js-console.css" rel="stylesheet" />
+</head>
+<body>
+    <textarea id="tb-text" rows="20" cols="50"></textarea>
+    <input type ="button" id="tb-button" value="extract emails" onclick="onClickButton()" />
+	<div id="console">
+	</div>
+	<script src="scripts/js-console.js">	  
+	</script>
+	<script>
+	    function onClickButton() {
+	        var text = jsConsole.read('#tb-text');
+	        var palindromes = extractPalindromes(text);
+	        
+	        for (palindrome in palindromes) {
+	            jsConsole.writeLine(palindromes[palindrome]);
+	        }
+	    }
+
+	    function extractPalindromes(text) {
+	        var words = getWords(text);
+	        var palindromes = [];
+	        for (var word in words) {
+	            if (CheckIfSimetric(words[word]) === true) {
+	                palindromes.push(words[word]);
+	            }
+	        }
+
+	        return palindromes;
+            
+	    }
+
+	    function getWords(text) {
+	        var pattern = new RegExp(/\b\w+\b/g);
+	        var matches = text.match(pattern);
+	        return matches;
+	    }
+
+	    function CheckIfSimetric(word) {
+	        var start = 0;
+	        var end = 0;
+	        for (start = 0, end = word.length - 1; start < word.length / 2; start++, end--) {
+	            if (word[start].toLowerCase() !== word[end].toLowerCase())
+	            {
+                    return false;
+	            }
+	         }
+
+	        return true;
+	    }
+
+	</script>
+</body>
+</html>

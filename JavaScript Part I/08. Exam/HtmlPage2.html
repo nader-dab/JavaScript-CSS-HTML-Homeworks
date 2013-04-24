@@ -1,0 +1,82 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <script>
+        function Solve(args) {
+            var dimensions = args[0].split(" ");
+            var n = parseInt(dimensions[0]);
+            var m = parseInt(dimensions[1]);
+            var numberArray = [];
+            var directionArray = [];
+            var row = 0;
+            var col = 0;
+            var counter = 0;
+
+            for (row = 0; row < n; row++) {
+                directionArray.push(args[row + 2]);
+            }
+
+            for (row = 0; row < n; row++) {
+                var numbers = [];
+                for (col = 0; col < m; col++) {
+                    counter++;
+                    numbers.push(counter);
+                }
+                numberArray.push(numbers);
+            }
+
+            var startPosition = args[1].split(" ");
+
+            var currentRow = parseInt(startPosition[0]);
+            var currentCol = parseInt(startPosition[1]);
+            var steps = 0;
+            var sum = 0;
+            var visited = {};
+            var lost = false;
+			
+            while (currentRow >= 0 && currentRow < n && currentCol >= 0 && currentCol < m) {
+                if (visited[currentRow + " " + currentCol]) {
+                    lost = true;
+                    break;
+                }
+                else {
+                    visited[currentRow + " " + currentCol] = true;
+                }
+
+                steps++;
+                sum += numberArray[currentRow][currentCol];
+
+                if (directionArray[currentRow][currentCol] == "l") {
+                    currentCol--;
+                }
+                else if (directionArray[currentRow][currentCol] == "r") {
+                    currentCol++;
+                }
+                else if (directionArray[currentRow][currentCol] == "u") {
+                    currentRow--;
+                }
+                else if (directionArray[currentRow][currentCol] == "d") {
+                    currentRow++;
+                }
+            }
+			
+            if (lost == true) {
+                return "lost " + steps;
+            }
+            else {
+                return "out " + sum;
+            }
+        }
+
+        function Execute() {
+            //var result = Solve(["3 4", "1 3", "lrrd", "dlll", "rddd"]);
+            var result = Solve(["5 8", "0 0", "rrrrrrrd", "rludulrd", "durlddud", "urrrldud", "ulllllll"]);
+            //var result = Solve(["5 8", "0 0", "rrrrrrrd", "rludulrd", "lurlddud", "urrrldud", "ulllllll"]);
+            console.log(result);
+        }
+    </script>
+</head>
+<body onload="Execute()">
+</body>
+</html>

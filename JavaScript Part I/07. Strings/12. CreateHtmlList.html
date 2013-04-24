@@ -1,0 +1,51 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>JS Console - Example</title>
+	<link href="styles/js-console.css" rel="stylesheet" />
+</head>
+<body>
+
+	<div id="console">
+        <div data-type="template" id="list-item">
+            <strong>-{name}-</strong> <span>-{age}-</span>
+        </div>
+	</div>
+	<script src="scripts/js-console.js">	  
+	</script>
+	<script>
+
+	    function generateList(people, template) {
+	        var innerList = [];
+	        innerList.push("<ul>");
+
+	        for (var index = 0; index < people.length; index++) {
+	            innerList.push("<li>");
+	            var templateInfo = template;
+	            for (var property in people[index]) {
+	                templateInfo = templateInfo.replace(new RegExp("\\-\\{" + property + "\\}\\-"), people[index][property]);
+	            }
+
+	            innerList.push(templateInfo);
+	            innerList.push("</li>");
+	        }
+
+	        innerList.push("</ul>");
+	        return innerList.join("");
+	    }
+
+	    var people = [
+            { name: "Pehsho", age: 14 },
+            { name: "Gosho", age: 19 },
+            { name: "Tosho", age: 22 },
+            { name: "Stamat", age: 24 }];
+
+	    var divPeople = document.getElementById("list-item");
+	    var template = divPeople.innerHTML;
+	    var peopleList = generateList(people, template);
+
+	    divPeople.innerHTML = peopleList;
+
+	</script>
+</body>
+</html>

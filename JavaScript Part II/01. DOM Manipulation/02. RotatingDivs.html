@@ -1,0 +1,87 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>Random Divs</title>
+</head>
+<body>
+	<div id="wrapper">
+		<a href="#" id="btn-rotate" onclick="onRotateButtonClick(event)">Rotate</a>
+        <a href="#" id="btn-stop" onclick="onStopButtonClick(event)">Stop</a>
+	</div>
+	<script>
+	    var wrapper = document.getElementById("wrapper");
+	    var totalDivs = 5;
+	    var angle = 0;
+	    var step = 5;
+	    var timer;
+	    var maxWidth = screen.width - 100;
+	    var maxHeight = screen.height - 300;
+	    var dFrag = document.createDocumentFragment();
+	    var divs = document.getElementsByClassName("rotating-div");
+	    generateDivs(totalDivs);
+
+	    function generateDivs(totalDivs) {
+	        var size = 40;
+	        for (var i = 0; i < totalDivs; i++) {
+                
+	            var div = document.createElement("div");
+	            div.classList.add("rotating-div");
+	            div.style.position = "absolute";
+	            div.style.backgroundColor = generateRandomColor();
+	            div.style.width = size + "px";
+	            div.style.height = size + "px";
+	            div.style.borderRadius = size / 2 + "px";
+	            setDivPosition(div)
+
+	            wrapper.appendChild(div);
+	        }
+	    }
+
+	    function setDivPosition(div) {
+	        angle += step;
+	        div.style.top = maxWidth / 5 + Math.cos(angle) * 200 + "px";
+	        div.style.left = maxWidth / 5 + Math.sin(angle) * 200 + "px";
+	    }
+
+	    function generateRandomColor() {
+		    var red = (Math.random() * 256) | 0;
+		    var green = (Math.random() * 256) | 0;
+		    var blue = (Math.random() * 256) | 0;
+
+		    return "rgb(" + red + "," + green + "," + blue + ")";
+	    }
+
+	    function onRotateButtonClick(e) {
+	        if (!e) e = window.event;
+
+	        timer = setInterval(function () {
+	            for (var i = 0; i < divs.length; i++) {
+	                setDivPosition(divs[i]);
+	            }
+	        }, 100);
+
+	        document.getElementById("btn-rotate").disabled = true;
+
+	        if (e.preventDefault) {
+	            e.preventDefault();
+	        }
+	        return false;
+	    }
+
+	    function onStopButtonClick(e) {
+	        if (!e) e = window.event;
+
+	        clearInterval(timer);
+
+	        document.getElementById("btn-stop").disabled = true;
+
+	        if (e.preventDefault) {
+	            e.preventDefault();
+	        }
+	        return false;
+	    }
+		
+	</script>
+	
+</body>
+</html>

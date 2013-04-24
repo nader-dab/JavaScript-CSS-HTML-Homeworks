@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>JS Console - Example</title>
+	<link href="styles/js-console.css" rel="stylesheet" />
+</head>
+<body>
+	<label for="tb-array">Enter array separated by "," :</label>
+	<input type="text" id="tb-array" />
+	<label for="tb-position">Enter position</label>
+	<input type= "text" id ="tb-position"/> 
+	<br />
+	<a href="#" onclick="onEvenButtonClick()">Check Neighbours</a>
+	<div id="console">
+	</div>
+	<script src="scripts/js-console.js">	  
+	</script>
+	<script>
+		function onEvenButtonClick(){
+			var input = jsConsole.read("#tb-array").split(",");
+			var index;
+			var array = [input.length];
+			for(index = 0; index < input.length; index++){
+				array[index] = parseInt(input[index]);
+			}
+			var position = jsConsole.readInteger("#tb-position");
+			jsConsole.writeLine(array);
+			jsConsole.writeLine(position);
+			if(CheckNumber(array, position)){
+				jsConsole.writeLine("Number is bigger");
+			}
+			else{
+				jsConsole.writeLine("Number is smaller");
+			}
+		}
+		
+		function CheckNumber(array, position){
+			if (position > 0 && (array[position - 1] > array[position])) {
+				return false;
+			}
+			if (position < array.length && (array[position + 1] > array[position])) {
+				return false;
+			}
+			return true;
+		}
+
+	</script>
+</body>
+</html>

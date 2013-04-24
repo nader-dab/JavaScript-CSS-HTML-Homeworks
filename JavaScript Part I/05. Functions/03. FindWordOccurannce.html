@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>JS Console - Example</title>
+	<link href="styles/js-console.css" rel="stylesheet" />
+</head>
+<body>
+	<label for="tb-text">Enter text:</label>
+	<input type="text" id="tb-text" />
+	<label for="tb-word">Enter word:</label>
+	<input type="text" id="tb-word" />
+	<br />
+	<a href="#" onclick="onEvenButtonClick()">Find word occurance</a>
+	<div id="console">
+	</div>
+	<script src="scripts/js-console.js">	  
+	</script>
+	<script>
+		function onEvenButtonClick(){
+			var text = jsConsole.read("#tb-text");
+			var word = jsConsole.read("#tb-word");
+			jsConsole.writeLine("Word count: " + getWordCount(text, word, true));
+		}
+		
+		function getWordCount(text, word, isCaseInsensetive){
+			function getWordCountCaseInsensetive(text, word){
+				text = text.toLowerCase();
+				word = word.toLowerCase();
+				var count = 0;
+				var position = text.indexOf(word, 0);
+				while(position >= 0){
+					count++;
+					position = text.indexOf(word, position + 1);
+				}
+				
+				return count;
+			}
+			
+			function getWordCountCaseSensetive(text, word){
+				var count = 0;
+				var position = text.indexOf(word, 0);
+				while(position >= 0){
+					count++;
+					position = text.indexOf(word, position + 1);
+				}
+				
+				return count;
+			}
+			
+			switch(arguments.length){
+				case 2: return getWordCountCaseInsensetive(text, word);
+				case 3: return isCaseInsensetive? getWordCountCaseSensetive(text,word) : getWordCountCaseInsensetive(text, word);
+			}
+		
+		}
+	</script>
+</body>
+</html>

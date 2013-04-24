@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>JS Console - Example</title>
+	<link href="styles/js-console.css" rel="stylesheet" />
+</head>
+<body>
+	<a href="#" onclick="onEvenButtonClick()">Count Divs on page</a>
+	<div id="console">
+	</div>
+	<script src="scripts/js-console.js">	  
+	</script>
+	<script>
+		function onEvenButtonClick(){
+			var divCount = document.getElementsByTagName('div');
+			jsConsole.writeLine("Div count: " + divCount.length);
+		}
+	</script>
+</body>
+</html>

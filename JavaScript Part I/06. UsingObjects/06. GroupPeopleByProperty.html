@@ -1,0 +1,72 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>JS Console - Example</title>
+	<link href="styles/js-console.css" rel="stylesheet" />
+</head>
+<body>
+	<div id="console">
+	</div>
+	<script src="scripts/js-console.js">	  
+	</script>
+	<script>
+
+	    function buildPerson(firstname, lastname, age) {
+	        return {
+	            firstname: firstname,
+	            lastname: lastname,
+	            age: age,
+	            toString: function () {
+	                return this.firstname + " " + this.lastname + " " + this.age;
+	            }
+	        }
+	    }
+
+	    function group(people, property) {
+	        var groupedPeople = {};
+	        for (var person in people) {
+	            if (groupedPeople[people[person][property]]) {
+	                groupedPeople[people[person][property]].push(people[person]);
+	            }
+	            else {
+	                groupedPeople[people[person][property]] = [];
+	                groupedPeople[people[person][property]].push(people[person]);
+	            }
+	        }
+
+	        return groupedPeople;
+	    }
+
+	    var people = [
+			buildPerson("Todor", "Petrov", 32),
+			buildPerson("Martin", "Petrov", 81),
+			buildPerson("Todor", "Geshev", 21),
+			buildPerson("Todor", "Ivanov", 32),
+			buildPerson("Martin", "Ivanov", 21),
+			buildPerson("Martin", "Geshev", 32),
+			buildPerson("Todor", "Brejilski", 81),
+			buildPerson("Lili", "Ivanova", 181),];
+
+	    var groupedByFname = group(people, "firstname");
+	    var groupedByLname = group(people, "lastname");
+	    var groupedByAge = group(people, "age");
+
+	    jsConsole.writeLine("<strong>People by first name:</strong>");
+	    for (var person in groupedByFname) {
+	        jsConsole.writeLine(groupedByFname[person].join("</br>"));
+	        
+	    }
+
+	    jsConsole.writeLine("<strong>People by last name:</strong>");
+	    for (var person in groupedByLname) {
+	        jsConsole.writeLine(groupedByLname[person].join("</br>"));
+	    }
+
+	    jsConsole.writeLine("<strong>People by age:</strong>");
+	    for (var person in groupedByAge) {
+	        jsConsole.writeLine(groupedByAge[person].join("</br>"));
+	    }
+	  
+	</script>
+</body>
+</html>

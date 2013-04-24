@@ -1,0 +1,56 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>Random Divs</title>
+</head>
+<body>
+	<div id="wrapper">
+        
+    </div>
+	<script>
+	    var tags = ["cms", "javascript", "js", "ASP.NET MVC", ".net", ".net", "css", "wordpress", "xaml", "js", "http", "web", "asp.net", "asp.net MVC", "ASP.NET MVC", "wp", "javascript", "js", "cms", "html", "javascript", "http", "http", "CMS"];
+	    var div = document.getElementById('wrapper');
+	    div.style.width = '200px';
+
+	    var tagCloud = generateTagCloud(tags, 17, 42);
+
+	    function generateTagCloud(tags, minFontSize, maxFontSize) {
+	        var tagFrequency = {};
+	        var maxFrequency = 1;
+
+	        for (var i = 0, len = tags.length; i < len; i++) {
+	            if (tagFrequency[tags[i]]) {
+	                tagFrequency[tags[i]]++;
+
+	                if (maxFrequency < tagFrequency[tags[i]]) {
+	                    maxFrequency = tagFrequency[tags[i]];
+	                }
+	            }
+	            else {
+	                tagFrequency[tags[i]] = 1;
+	            }
+	        }
+
+	        for (var tag in tagFrequency) {
+	            var tagElement = document.createElement("span");
+	            var text = document.createTextNode(tag + " ");
+	            tagElement.appendChild(text);
+
+	            if (maxFrequency == 1) {
+	                tagElement.style.fontSize = maxFontSize + "px";
+	            }
+	            else if(tagFrequency[tag] == 1) {
+	                tagElement.style.fontSize = minFontSize + "px";
+	            }
+	            else {
+	                tagElement.style.fontSize = ((maxFontSize - minFontSize) / (tagFrequency[tag] - 1) + minFontSize) + "px";
+	            }
+
+	            div.appendChild(tagElement);
+	        }
+	    }
+	    
+	</script>
+	
+</body>
+</html>

@@ -1,0 +1,53 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>JS Console - Example</title>
+	<link href="styles/js-console.css" rel="stylesheet" />
+</head>
+<body>
+    <label for="tb-inputField">Enter expression:</label>
+    <input type ="text" id="tb-inputFIeld" />
+    <input type ="button" id="tb-button" value="check brackets" onclick="onClickButton()" />
+	<div id="console">
+	</div>
+	<script src="scripts/js-console.js">	  
+	</script>
+	<script>
+	    function onClickButton() {
+	        var expression = jsConsole.read('#tb-inputFIeld');
+	        var correct = checkBrackets(expression);
+	        if (correct === true) {
+	            jsConsole.writeLine('Correct expression');
+	        }
+	        else {
+	            jsConsole.writeLine('Incorrect expression');
+	        }
+	    }
+
+	    function checkBrackets(expression) {
+	        var brackets = 0;
+	        var index = 0;
+	        for (index = 0; index < expression.length; index++)
+	        {
+                if (expression[index] == '('){
+                    brackets++;
+	            }
+
+	            if (expression[index] == ')'){	        
+	                brackets--;
+	            }
+
+	            if (brackets < 0){	        
+	                return false;
+	            }
+	        }
+
+	        if (brackets != 0) {
+	            return false;
+	        }
+
+	        return true;
+	    }
+	</script>
+</body>
+</html>

@@ -1,0 +1,46 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <script>
+        function Solve(args) {
+            var n = parseInt(args[0]);
+            var myArray = [];
+            var i = 0;
+            var k = 0;
+            var j = 0;
+            for ( i = 0; i < n; i++) {
+                myArray.push(parseInt(args[i + 1]));
+            }
+			
+            var maxSum = -1000000000;
+
+            for (i = 0; i < n; i++)
+            {
+                for (k = i + 1; k < n; k++) {
+                    var sum = 0;
+                    for (j = i; j < k ; j++) {
+                        sum += myArray[j];
+                    }
+
+                    if (sum > maxSum) {
+                        maxSum = sum;
+                    }
+                }
+            }
+
+            return maxSum;
+        }
+
+        function Execute() {
+            //var result = Solve(["8", "1", "6", "-9", "4", "4", "-2", "10", "-1"]);
+            //var result = Solve(["6", "1", "3", "-5", "8", "7", "-6"]);
+            var result = Solve(["9", "-9", "-8", "-8", "-7", "-6", "-5", "-1", "-7", "-6"]);
+            //var result = Solve(["1", "-9"]);
+            console.log(result);
+        }
+    </script>
+</head>
+<body onload="Execute()">
+</body>
+</html>

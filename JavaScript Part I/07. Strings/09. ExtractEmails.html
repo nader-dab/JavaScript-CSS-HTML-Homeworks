@@ -1,0 +1,33 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>JS Console - Example</title>
+	<link href="styles/js-console.css" rel="stylesheet" />
+</head>
+<body>
+    <textarea id="tb-text" rows="20" cols="50"></textarea>
+    <input type ="button" id="tb-button" value="extract emails" onclick="onClickButton()" />
+	<div id="console">
+	</div>
+	<script src="scripts/js-console.js">	  
+	</script>
+	<script>
+	    function onClickButton() {
+	        var text = jsConsole.read('#tb-text');
+	        var emails = extractMails(text);
+	        
+	        for (email in emails) {
+	            jsConsole.writeLine(emails[email]);
+	        }
+	    }
+
+	    function extractMails(text) {
+	        var regex = /\b\S+@\S+\.\S+\b/g;
+	        var matches = text.match(new RegExp(regex));
+
+	        return matches;
+	    }
+
+	</script>
+</body>
+</html>

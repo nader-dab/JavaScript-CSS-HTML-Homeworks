@@ -1,0 +1,35 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>Random Divs</title>
+</head>
+<body>
+	<div id="wrapper">
+        <label for="font-color-input">Font color</label>
+        <input type="color" id="font-color-input" onchange="updateColor(event)"/>
+        <label for="background-color-input">Background color</label>
+        <input type="color" id="background-color-input" onchange="updateColor(event)"/>
+	    <textarea id="textarea-input" rows="10" cols="50"></textarea>
+    </div>
+	<script>
+
+	    var textarea = document.getElementById("textarea-input");
+	    var fontInput = document.getElementById("font-color-input");
+	    var backgroundInput = document.getElementById("background-color-input");
+
+	    function updateColor(e) {
+	        if (!e) e = window.event;
+
+	        textarea.style.color = fontInput.value;
+	        textarea.style.backgroundColor = backgroundInput.value;
+	        
+	        if (e.preventDefault) {
+	            e.preventDefault();
+	        }
+	        return false;
+	    }
+	    
+	</script>
+	
+</body>
+</html>

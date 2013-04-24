@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>JS Console - Example</title>
+	<link href="styles/js-console.css" rel="stylesheet" />
+</head>
+<body>
+	<div id="console">
+	</div>
+	<script src="scripts/js-console.js">	  
+	</script>
+	<script>
+	    Array.prototype.remove = function (param) {
+	        for (var index = 0; index < this.length; index++) {
+	            if (this[index] == param) {
+	                this.splice(index, 1);
+	            }
+	        }
+	    }
+
+	    var arr = [1, 2, 1, 4, 1, 3, 4, 1, 111, 3, 2, 1, "1"];
+
+	    jsConsole.writeLine("Before: " + arr.join(", "));
+
+	    arr.remove(1); //arr = [2,4,3,4,111,3,2,"1"];
+
+	    jsConsole.writeLine("After: " + arr.join(", "));
+
+	</script>
+</body>
+</html>

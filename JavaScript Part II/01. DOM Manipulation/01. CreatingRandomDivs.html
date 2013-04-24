@@ -1,0 +1,64 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>Random Divs</title>
+</head>
+<body>
+	<div id="wrapper">
+		<a href="#" id="create-element" onclick="onCreateButtonClick(event)">Create random divs (between 1 and 10)</a>
+	</div>
+	<script>
+	    var wrapper = document.getElementById("wrapper");
+	    function onCreateButtonClick(e){
+		    if (!e) e = window.event;
+
+		    makeRandomDivs();
+			
+		    if (e.preventDefault) {
+			    e.preventDefault();
+		    }
+		    return false;
+	    }
+	
+	    function makeRandomDivs(){
+		    while(wrapper.lastChild instanceof HTMLDivElement){
+			    wrapper.removeChild(wrapper.lastChild);
+		    }
+	
+		    var totalDivs = (Math.random() * 10 | 0) + 1;
+		
+		    var dFrag = document.createDocumentFragment();
+		    for(var i = 0; i < totalDivs; i++){
+			    var div = document.createElement("div");
+			    div.style.position = "absolute";
+			    div.style.backgroundColor = generateRandomColor();
+			    div.style.color = generateRandomColor();
+			    div.style.top = (Math.random() * (screen.height - 100) | 0) + "px";
+			    div.style.left = (Math.random() * (screen.width - 100) | 0) + "px";
+			    div.style.width = (Math.random() * 80 | 0) + 20 + "px";
+			    div.style.height = (Math.random() * 80 | 0) + 20 + "px";
+			    div.style.border = (Math.random() * 20 | 0) + 1 + "px" + " solid " + generateRandomColor();
+			    div.style.borderRadius = (Math.random() * 15 | 0) + "px";
+			
+			    var strong = document.createElement("strong");
+			    var text = document.createTextNode("div");
+			    strong.appendChild(text);
+			    div.appendChild(strong);
+			    dFrag.appendChild(div);
+		    }
+		
+		    wrapper.appendChild(dFrag);
+	    }
+	
+	    function generateRandomColor() {
+		    var red = (Math.random() * 256) | 0;
+		    var green = (Math.random() * 256) | 0;
+		    var blue = (Math.random() * 256) | 0;
+
+		    return "rgb(" + red + "," + green + "," + blue + ")";
+	    }
+		
+	</script>
+	
+</body>
+</html>

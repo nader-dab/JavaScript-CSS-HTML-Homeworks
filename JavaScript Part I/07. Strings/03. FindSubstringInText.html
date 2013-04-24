@@ -1,0 +1,49 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>JS Console - Example</title>
+	<link href="styles/js-console.css" rel="stylesheet" />
+</head>
+<body>
+    <textarea id="tb-text" rows="20" cols="50"></textarea>
+    <label for="tb-inputField">Enter substring:</label>
+    <input type ="text" id="tb-inputFIeld" />
+    <input type ="button" id="tb-button" value="check occurance" onclick="onClickButton()" />
+	<div id="console">
+	</div>
+	<script src="scripts/js-console.js">	  
+	</script>
+	<script>
+
+	    function onClickButton2() {
+	        var text = jsConsole.read('#tb-text');
+	        var subString = jsConsole.read('#tb-inputFIeld');
+	        var occurance = text.match(new RegExp(subString, "gi"));
+
+	        jsConsole.writeLine('The substring occures ' + occurance.length + ' times');
+	    }
+
+	    function onClickButton() {
+	        var text = jsConsole.read('#tb-text');
+	        var subString = jsConsole.read('#tb-inputFIeld');
+	        var occurance = findOccurance(text, subString);
+	        
+	        jsConsole.writeLine('The substring occures ' +occurance+ ' times');
+	    }
+
+	    function findOccurance(text, subString) {
+	        text = text.toLowerCase();
+	        text = text.toLowerCase();
+	        subString = subString.toLowerCase();
+	        var occurance = 0;
+	        var index = text.indexOf(subString);
+	        while (index >= 0) {
+	            occurance++;
+	            index = text.indexOf(subString, index + 1);
+	        }
+
+	        return occurance;
+	    }
+	</script>
+</body>
+</html>

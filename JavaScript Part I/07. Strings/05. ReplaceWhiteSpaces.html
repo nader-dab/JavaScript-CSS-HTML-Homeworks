@@ -1,0 +1,32 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>JS Console - Example</title>
+	<link href="styles/js-console.css" rel="stylesheet" />
+</head>
+<body>
+    <textarea id="tb-text" rows="20" cols="50"></textarea>
+    <input type ="button" id="tb-button" value="change text" onclick="onClickButton()" />
+	<div id="console">
+	</div>
+	<script src="scripts/js-console.js">	  
+	</script>
+	<script>
+	    function onClickButton() {
+	        var text = jsConsole.read('#tb-text');
+	        var changed = changeText(text, ' ', '&nbsp');
+	        
+	        jsConsole.writeLine(changed);
+	    }
+
+	    function changeText(text, oldStr, newStr) {
+	        while (text.indexOf(oldStr) >= 0) {
+	            text = String(text).replace(oldStr, newStr);
+	        }
+
+	        return text;
+	    }
+
+	</script>
+</body>
+</html>

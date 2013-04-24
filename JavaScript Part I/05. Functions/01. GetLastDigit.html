@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>JS Console - Example</title>
+	<link href="styles/js-console.css" rel="stylesheet" />
+</head>
+<body>
+	<label for="tb-number">Enter number:</label>
+	<input type="text" id="tb-number" />
+	<br />
+	<a href="#" onclick="onEvenButtonClick()">Get last digit</a>
+	<div id="console">
+	</div>
+	<script src="scripts/js-console.js">	  
+	</script>
+	<script>
+		function onEvenButtonClick(){
+			var input = jsConsole.readInteger("#tb-number");
+			jsConsole.writeLine("Last digit is: " + getLastDigit(input));
+		}
+		
+		function getLastDigit(number){
+			switch(number%10){
+				case 0: return "zero";
+				case 1: return "one";
+				case 2: return "two";
+				case 3: return "three";
+				case 4: return "four";
+				case 5: return "five";
+				case 6: return "six";
+				case 7: return "seven";
+				case 8: return "eight";
+				case 9: return "nine";
+				default: return "not a number";
+			}
+		}
+	</script>
+</body>
+</html>

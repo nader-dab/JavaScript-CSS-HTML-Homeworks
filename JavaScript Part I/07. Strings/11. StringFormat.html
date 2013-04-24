@@ -1,0 +1,28 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>JS Console - Example</title>
+	<link href="styles/js-console.css" rel="stylesheet" />
+</head>
+<body>
+	<div id="console">
+	</div>
+	<script src="scripts/js-console.js">	  
+	</script>
+	<script>
+	    var str = format("This {0} just {1} test.", "is", "a");
+	    jsConsole.writeLine(str);
+
+
+	    function format() {
+	        var inputString = arguments[0];
+	        for (var index = 0; index < arguments.length; index++) {
+	            var regex = new RegExp("\\{" + index + "\\}");
+	            inputString = inputString.replace(regex, arguments[index + 1]);
+	        }
+	        return inputString;
+	    }
+
+	</script>
+</body>
+</html>

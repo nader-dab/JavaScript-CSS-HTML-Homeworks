@@ -1,0 +1,43 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>Random Divs</title>
+    <script>
+        if (!document.querySelector || !document.querySelectorAll) {
+            querySelectorShim();
+        }
+
+        function querySelectorShim() {
+            document.querySelector = function querySelector(selector) {
+                if (selector[0] === "#") {
+                    return document.getElementById(selector.substr(1));
+                }
+                else if (selector[0] === ".") {
+                    return document.getElementsByClassName(selector.substr(1))[0];
+                }
+                else {
+                    return document.getElementsByTagName(selector)[0];
+                }
+            }
+
+            document.querySelectorAll = function querySelectorAll(selector) {
+                if (selector[0] === "#") {
+                    return document.getElementById(selector.substr(1));
+                }
+                else if (selector[0] === ".") {
+                    return document.getElementsByClassName(selector.substr(1));
+                }
+                else {
+                    return document.getElementsByTagName(selector);
+                }
+            }
+        }
+		
+	</script>
+
+</head>
+<body>
+	<div id="wrapper">
+	</div>
+</body>
+</html>

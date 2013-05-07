@@ -1,0 +1,53 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+
+    <script>
+        var specialConsole = (function () {
+            function writeLine() {
+                var message = getMessage(arguments);
+                console.log(message);
+            }
+
+            function writeError() {
+                var message = getMessage(arguments);
+                console.error(message);
+            }
+
+            function writeWarning() {
+                var message = getMessage(arguments);
+                console.warn(message);
+            }
+
+            function getMessage(args) {
+                var message = args[0].toString();
+
+                if (args.length > 1) {
+                    for (var i = 0; i < args.length - 1; i++) {
+                        var regex = new RegExp("\\{" + i + "\\}", "gm");
+                        message = message.replace(regex, args[i + 1]);
+                    }
+                }
+
+                return message;
+            }
+
+            return {
+                writeLine: writeLine,
+                writeError: writeError,
+                writeWarning: writeWarning
+            }
+        })();
+            specialConsole.writeLine("Message: hello");
+            //logs to the console "Message: hello"
+            specialConsole.writeLine("Message: {0}", "hello");
+            //logs to the console "Message: hello"
+            specialConsole.writeError("Error: {0}", "Something happened");
+            specialConsole.writeWarning("Warning: {0}", "A warning");
+
+    </script>              
+</body>
+</html>

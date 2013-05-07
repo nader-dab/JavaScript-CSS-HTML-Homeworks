@@ -1,0 +1,129 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    <input type ="button" id="addRectangle" value ="add rectangle" onclick="movingShapes.add('rect')" />
+    <input type ="button" id="addCircle" value ="add circle" onclick="movingShapes.add('ellipse')" />
+    <script>
+        var movingShapes = (function () {
+            var MAX_SHAPE_SIZE = 50;
+            var MAX_BORDER_SIZE = 5;
+
+            var rectangleStartPositionTop = 50;
+            var rectangleStartPositionLeft = 50;
+            var rectangleLimitRight = 450;
+            var rectangleLimitBottom = 250;
+            var rectangleStep = 10;
+
+            var radius = 150;
+            var circleCenterTop = 200;
+            var circleCenterLeft = 650;
+            var angleStep = 5;
+
+            var rectangles = [];
+            var circles = [];
+            
+            setInterval(move, 100);
+
+            function add(shape) {
+
+                var div = document.createElement("div");
+                div.style.width = MAX_SHAPE_SIZE + "px";
+                div.style.height = MAX_SHAPE_SIZE + "px";
+                div.style.backgroundColor = ranodmColor();
+                div.style.border = MAX_BORDER_SIZE + "px solid " + ranodmColor();
+                div.style.position = "absolute";
+
+                switch (shape) {
+                    case "rect":
+                        div.style.top = rectangleStartPositionTop + "px";
+                        div.style.left = rectangleStartPositionLeft + " px";
+                        rectangles.push({ div: div, leftPosition: rectangleStartPositionLeft, topPosition: rectangleStartPositionTop, direction: "right" });
+                        break;
+                    case "ellipse":
+                        div.style.borderRadius = MAX_SHAPE_SIZE + "px";
+                        div.style.top = circleCenterTop + radius * Math.sin(270 * Math.PI / 180) + "px";
+                        div.style.left = circleCenterLeft + radius * Math.cos(270 * Math.PI / 180) + "px";
+                        circles.push({ div: div, angle: 270 });
+                        break;
+                    default: throw { message: "Invalid shape." };
+                }
+
+                document.body.appendChild(div);
+                
+            }
+
+            function ranodmColor() {
+                var red = Math.random() * 255 | 0;
+                var green = Math.random() * 255 | 0;
+                var blue = Math.random() * 255 | 0;
+
+                return "rgb(" + red + "," + green + "," + blue + ")";
+            }
+
+            function move() {
+                console.log("move");
+                moveCircles();
+                moveRectangles();
+            }
+
+            function moveCircles() {
+                for (var i = 0; i < circles.length; i++) {
+
+                    circles[i].angle %= 360;
+                    circles[i].angle += angleStep;
+
+                    var x = circleCenterLeft + radius * Math.cos(circles[i].angle * Math.PI / 180);
+                    var y = circleCenterTop + radius * Math.sin(circles[i].angle * Math.PI / 180);
+
+                    circles[i].div.style.left = x + "px";
+                    circles[i].div.style.top = y + "px";
+                }
+            }
+
+            function moveRectangles() {
+                for (var i = 0; i < rectangles.length; i++) {
+
+                    if (rectangles[i].direction == "right" && rectangles[i].leftPosition >= rectangleLimitRight) {
+                        rectangles[i].direction = "bottom";
+                    }
+
+                    if (rectangles[i].direction == "bottom" && rectangles[i].topPosition >= rectangleLimitBottom) {
+                        rectangles[i].direction = "left";
+                    }
+
+                    if (rectangles[i].direction == "left" && rectangles[i].leftPosition <= rectangleStartPositionLeft) {
+                        rectangles[i].direction = "top";
+                    }
+
+                    if (rectangles[i].direction == "top" && rectangles[i].topPosition <= rectangleStartPositionTop) {
+                        rectangles[i].direction = "right";
+                    }
+
+                    switch (rectangles[i].direction) {
+                        case "right": rectangles[i].leftPosition += rectangleStep; break;
+                        case "left": rectangles[i].leftPosition -= rectangleStep; break;
+                        case "top": rectangles[i].topPosition -= rectangleStep; break;
+                        case "bottom": rectangles[i].topPosition += rectangleStep; break;
+                        default: throw { message: "Invalid direction." };
+                    }
+
+                    rectangles[i].div.style.left = rectangles[i].leftPosition + "px";
+                    rectangles[i].div.style.top = rectangles[i].topPosition + "px";
+                    
+                }
+            }
+            return {
+                add: add
+            }
+        })();
+
+        //add element with rectangular movement
+        movingShapes.add("rect"); 
+        //add element with ellipse movement
+        movingShapes.add("ellipse");
+    </script>              
+</body>
+</html>

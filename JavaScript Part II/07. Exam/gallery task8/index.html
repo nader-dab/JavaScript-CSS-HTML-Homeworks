@@ -1,0 +1,45 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <link href="styles.css" rel="stylesheet" />
+    <script src="imageGalleryRepository.js"></script>
+    <script src="gallery.js"></script>
+</head>
+<body>
+    <div id="image-gallery-holder"></div>
+    <div id="divider"></div>
+    <div id="second-gallery-holder"></div>
+    <script>
+        //<!--Tasks number: 1-->
+        var gallery = controls.getImageGallery("#image-gallery-holder");
+        gallery.addImage("k JS Ninja", "images/js-ninja.png");
+        gallery.addImage("A JS <br /> Ninja", "images/js-ninja.png");
+        gallery.addImage("Z JS Ninja", "images/js-ninja.png");
+        var ninjasAlbum = gallery.addAlbum("Ninjas");
+        gallery.addImage("JS Ninja", "images/js-ninja.png");
+        ninjasAlbum.addImage("D JS Ninja 2", "images/js-ninja.png");
+        ninjasAlbum.addImage("C JS Ninja 2", "images/js-ninja.png");
+        ninjasAlbum.addImage("JS Ninja 2", "images/js-ninja.png");
+
+        //<!--Tasks number: 2-->
+        var kidsAlbum = ninjasAlbum.addAlbum("kids");
+        kidsAlbum.addImage("Kid <br /> Ninja", "images/js-ninja.png");
+        kidsAlbum.addImage("Kid Ninja", "images/js-ninja.png");
+        gallery.render();
+
+        //<!--Tasks number: 4-->
+        //imageGalleryRepository.save("gallery", gallery);
+        //console.log(imageGalleryRepository.load("gallery"));
+        //<!--Tasks number: 5-->
+        var imageGalleryData = gallery.getImageGalleryData();
+        imageGalleryRepository.save("ninja-gallery", imageGalleryData);
+
+        //<!--Tasks number: 6-->
+        var secondImageGaleryData = imageGalleryRepository.load("ninja-gallery");
+        var secondGallery = controls.buildImageGallery("#second-gallery-holder", secondImageGaleryData);
+        secondGallery.render();
+
+    </script>
+</body>
+</html>

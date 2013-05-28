@@ -1,0 +1,17 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <script src="accordeon.js"></script>
+    <script src="local-storage.js"></script>
+</head>
+<body>
+    <div id="accordeon-holder"></div>
+    <script>
+
+        var data = localStorage.getItem("accordeon");
+        var accordeon = controls.getDeserializedAccordeon("#accordeon-holder", data);
+        accordeon.render();
+    </script>
+</body>
+</html>

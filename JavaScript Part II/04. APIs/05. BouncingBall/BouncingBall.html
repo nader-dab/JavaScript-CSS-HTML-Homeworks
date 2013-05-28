@@ -1,0 +1,58 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<title>Bouncing Ball</title>
+	<style>
+		canvas{
+			border: 1px solid green;
+		}
+	</style>
+</head>
+<body>
+	<canvas id="main-canvas" width="600" height="400">Canvas not supported.</canvas>
+	<script>
+		(function(){
+			var canvas = document.getElementById("main-canvas");
+			var ctx = canvas.getContext("2d");
+			var x = ctx.canvas.width / 2 | 0;
+			var y = ctx.canvas.height / 2 | 0;
+			var intervalX = 5;
+			var intervalY = 5;
+			var radius = 25;
+			ctx.fillStyle = "#ff0000";
+			
+			setInterval(function (){
+				ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
+				
+				drawCircleOnLocation(x, y, radius);
+				if(x <= 0 + radius){
+					intervalX *= -1;
+				}
+				
+				if(y <= 0 + radius){
+					intervalY *= -1;
+				}
+				
+				if(x >= ctx.canvas.width - radius){
+					intervalX *= -1;
+				}
+				
+				if(y > ctx.canvas.height - radius){
+					intervalY *= -1;
+				}
+				
+				x+= intervalX;
+				y+= intervalY;
+				
+			}, 20);
+			
+			
+			function drawCircleOnLocation(x, y, radius){
+				ctx.beginPath();
+				ctx.arc(x, y, radius, 0, 2 * Math.PI);
+				ctx.fill();
+			}
+		})();
+	</script>
+</body>
+</html>

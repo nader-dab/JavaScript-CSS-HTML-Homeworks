@@ -1,0 +1,60 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    <div id="wrapper">
+        <form>
+            <label for="text-input">Task</label>
+            <input type="text" id="text-input"/>
+            <input type="button" id="add-btn" value ="add new item" />
+            <input type="button" id="del-btn" value ="delete" />
+            <input type="button" id="show-hide-btn" value ="show/hide" />
+        </form>
+        <ul id="task">
+
+        </ul>
+        <script>
+            var add = document.getElementById('add-btn');
+            var del = document.getElementById('del-btn');
+            var showHide = document.getElementById('show-hide-btn');
+            var input = document.getElementById('text-input');
+            var uList = document.getElementById('task');
+            var display = false;
+
+            add.addEventListener('click', addNewTask, false);
+            del.addEventListener('click', deleteTask, false);
+            showHide.addEventListener('click', displayTasks, false);
+
+            function addNewTask(ev) {
+                ev.preventDefault();
+                var task = document.createElement('li');
+                task.innerText = input.value;
+                uList.appendChild(task);
+            }
+
+            function deleteTask(ev) {
+                ev.preventDefault();
+                for (var i = 0; i < uList.childNodes.length; i++) {
+                    if (uList.childNodes[i].innerText == input.value) {
+                        uList.removeChild(uList.childNodes[i]);
+                        break;
+                    }
+                }
+            }
+
+            function displayTasks(ev) {
+                if (display) {
+                    uList.style.display = "block";
+                } else {
+                    uList.style.display = "none";
+                }
+
+                display = !display;
+            }
+
+        </script>
+    </div>
+</body>
+</html>

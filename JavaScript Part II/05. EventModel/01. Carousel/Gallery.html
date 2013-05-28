@@ -1,0 +1,63 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body onload="displayImage()">
+    <div id="wrapper">
+        <div id="picture-frame">
+            <img src="imgs/picture1.jpg" width="400"/>
+            <img src="imgs/picture2.jpg" width="400"/>
+            <img src="imgs/picture3.jpg" width="400"/>
+            <img src="imgs/picture4.jpg" width="400"/>
+            <img src="imgs/picture5.jpg" width="400"/>
+            <img src="imgs/picture6.jpg" width="400"/>
+
+        </div>
+        <form>
+            <input type="button" id="prev-btn" value="prev"/>
+            <input type="button" id="next-btn" value="next"/>
+        </form>
+    </div>
+    <script>
+        var images = document.getElementsByTagName('img');
+        var prev = document.getElementById('prev-btn');
+        var next = document.getElementById('next-btn');
+        var imageIndex = 0;
+
+        prev.addEventListener('click', displayPrevImage, false);
+        next.addEventListener('click', displayNextImage, false);
+
+        for (var i = 0; i < images.length; i++) {
+            images[i].style.display = 'none';
+        }
+
+        function displayImage(ev) {
+            images[imageIndex].style.display = "block";
+        }
+
+        function displayNextImage(ev) {
+            images[imageIndex].style.display = 'none';
+            if (imageIndex < images.length - 1) {
+                imageIndex++;
+            } else {
+                imageIndex = 0;
+            }
+
+            displayImage();
+        }
+
+        function displayPrevImage(ev) {
+            images[imageIndex].style.display = 'none';
+            if (imageIndex > 0) {
+                imageIndex--;
+            } else {
+                imageIndex = images.length-1;
+            }
+
+            displayImage();
+        }
+
+    </script>
+</body>
+</html>

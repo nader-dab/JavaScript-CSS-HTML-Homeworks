@@ -1,0 +1,176 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Trash Game</title>
+    <style>
+        #wrapper {
+            margin: 0 auto;
+            width: 800px;
+
+            border: 1px solid black;
+            font-family: Arial;
+        }
+            #wrapper:after {
+                display: block;
+                content: "";
+                clear: both;
+                height: 0;
+            }
+        #main-container {
+            width: 595px;
+            height: 600px;
+            float: right;
+            position: relative;
+        }
+
+        #trash-bin {
+            width: 200px;
+            height: 200px;
+            background-image: url('imgs\\trash-closed.jpg');
+            background-repeat: no-repeat;
+        }
+
+        #timer {
+            width: 200px;
+            height: 200px;
+            padding: 50px;
+        }
+            #timer span {
+                
+                line-height: 200px;
+                font-size: 24px;
+            }
+
+        #top-scores {
+            width: 200px;
+            height: 200px;
+            padding: 10px;
+        }
+            #top-scores span {
+                font-weight: bold;
+            }
+            
+
+        #side-container {
+            width: 200px;
+            float: left;
+        }
+        .trash {
+            width: 120px;
+            height: 130px;
+            background-image: url('imgs\\trash.PNG');
+            background-repeat: no-repeat;
+        }
+    </style>
+</head>
+<body onload="showTopScores()">
+    <div id="wrapper">
+        <div id="side-container">
+            <div id="trash-bin" ondrop="drop(event), changeState('closed')" ondragover="allowDrop(event)" ondragenter="changeState('open')" ondragleave="changeState('closed')"></div>
+            <div id="timer"><span>Time: 0</span></div>
+            <div id="top-scores"></div>
+        </div>
+        <div id="main-container"></div>
+
+        <script>
+            var MAX_TRASH_COUNT = 10;
+
+            var container = document.getElementById('main-container');
+
+            for (var i = 0; i < 10; i++) {
+                var div = document.createElement('div');
+                div.id = 'trash' + i;
+                div.classList.add('trash');
+                div.style.position = 'absolute';
+                div.style.left = (Math.random() * (container.offsetWidth - 130) | 0) + 'px';
+                div.style.top = (Math.random() * (container.offsetHeight - 130) | 0) + 'px';
+                div.draggable = true;
+                div.addEventListener('dragstart', drag, false);
+                container.appendChild(div);
+            }
+
+            var totalTrash = document.getElementsByClassName('trash');
+            var timer = document.getElementById('timer');
+            var time = 0;
+
+            var update = setInterval(updateTimer, 1000);
+
+            function updateTimer() {
+                timer.innerHTML = "<span>Time: " + time + "</span>";
+                time++;
+            }
+
+
+            function showTopScores() {
+                var topScores = document.getElementById('top-scores');
+                if (localStorage.length == 0) {
+                    topScores.innerHTML = "<span>No top scrores entered </span>";
+                    return;
+                }
+
+                var playersInfo = [];
+                var i = 0;
+
+                for (i = 0; i < localStorage.length; i++) {
+                    var name = localStorage.key(i);
+                    var score = localStorage.getItem(localStorage.key(i));
+                    playersInfo.push({ name: name, score: score });
+                }
+
+                playersInfo.sort(function (x, y) { return x.score - y.score; });
+
+                for (i = 5; i < playersInfo.length; i++) {
+                    localStorage.removeItem(playersInfo[i].name);
+                }
+
+                if (playersInfo.length >= 5) {
+                    playersInfo = playersInfo.slice(0, 5);
+                }
+
+                var text = "";
+
+                for (i = 0; i < playersInfo.length; i++) {
+                    text += "Player: <span> " + playersInfo[i].name + "</span> Score: <span>" + playersInfo[i].score + "</span></br>";
+                }
+
+                topScores.innerHTML = text;
+
+                for (i = 0; i < length; i++) {
+
+                }
+            }
+
+            function drop(ev) {
+                ev.preventDefault();
+                var data = ev.dataTransfer.getData('dragable-id');
+                container.removeChild(document.getElementById(data));
+
+                if (totalTrash.length === 0) {
+                    savePlayerData();
+                }
+            }
+
+            function savePlayerData() {
+                var player = prompt('Congratulations! Enter your name:', 'player1');
+                localStorage.setItem(player, time);
+                clearInterval(update);
+                showTopScores();
+            }
+
+            function drag(ev) {
+                ev.dataTransfer.setData('dragable-id', ev.target.id);
+            }
+
+            function allowDrop(ev) {
+                ev.preventDefault();
+            }
+
+            function changeState(state) {
+                var trashBin = document.getElementById('trash-bin');
+                trashBin.style.backgroundImage = "url('imgs/trash-" + state + ".jpg')";
+            }
+
+        </script>
+    </div>
+</body>
+</html>

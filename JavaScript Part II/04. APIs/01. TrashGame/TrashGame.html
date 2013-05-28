@@ -1,0 +1,90 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <style>
+        #wrapper {
+            margin: 0 auto;
+            box-sizing: border-box;
+            width: 800px;
+            height: 600px;
+            border: 1px solid black;
+        }
+            #wrapper:after {
+                display: block;
+                content: "";
+                clear: both;
+                height: 0;
+            }
+        #trash-bin {
+            box-sizing: border-box;
+            width: 200px;
+            height: 200px;
+            background-image: url("imgs\\trash-closed.jpg");
+            background-repeat: no-repeat;
+            float: left;
+        }
+        #container {
+            box-sizing: border-box;
+            width: 480px;
+            height: 470px;
+            float: left;
+        }
+
+        .trash {
+            width: 120px;
+            height: 130px;
+            background-image: url("imgs\\trash.PNG");
+            background-repeat: no-repeat;
+            position:absolute;
+        }
+
+    </style>
+</head>
+<body>
+    <div id ="wrapper">
+        <div id="trash-bin" ondrop="drop(event), changeState('closed')" ondragover="allowDrop(event)" ondragenter="changeState('open')" ondragleave="changeState('closed')"></div>
+        <div id ="container"></div>
+
+    </div>
+    
+    <script>
+
+        var container = document.getElementById("container");
+
+        for (var i = 0; i < 10; i++) {
+            var div = document.createElement('div');
+            div.className = "trash";
+            div.id = "trash" + i;
+            div.style.position = "absolute";
+            div.style.left = (container.offsetLeft + Math.random() * container.offsetWidth | 0) + "px";
+            div.style.top = (container.offsetTop + Math.random() * container.offsetHeight | 0) + "px";
+            div.draggable = true;
+            div.addEventListener('dragstart', drag, false);
+
+            container.appendChild(div);
+        }
+
+        function drag(ev) {
+            ev.dataTransfer.setData("draggable", ev.target.id);
+        }
+
+
+        function drop(ev) {
+            ev.preventDefault();
+            var data = ev.dataTransfer.getData("draggable");
+            container.removeChild(document.getElementById(data));
+        }
+
+        function allowDrop(ev) {
+            ev.preventDefault();
+        }
+
+        function changeState(state) {
+            var trashBin = document.getElementById("trash-bin");
+            trashBin.style.backgroundImage = "url('imgs/trash-" + state + ".jpg')";
+        }
+
+    </script>
+</body>
+</html>

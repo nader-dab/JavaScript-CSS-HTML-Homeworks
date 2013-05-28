@@ -1,0 +1,28 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <link href="styles.css" rel="stylesheet" />
+    <script src="gallery.js"></script>
+</head>
+<body>
+    <div id="image-gallery-holder">
+        
+    </div>
+    <script>
+        var gallery = controls.getImageGallery("#image-gallery-holder");
+        gallery.addImage("JS Ninja", "images/js-ninja.png");
+        gallery.addImage("JS Ninja", "images/js-ninja.png");
+        gallery.addImage("JS Ninja", "images/js-ninja.png");
+        var ninjasAlbum = gallery.addAlbum("Ninjas");
+        ninjasAlbum.addImage("JS Ninja 2", "images/js-ninja.png");
+        ninjasAlbum.addImage("JS Ninja 2", "images/js-ninja.png");
+        ninjasAlbum.addImage("JS Ninja 2", "images/js-ninja.png");
+
+        var kidsAlbum = ninjasAlbum.addAlbum("kids");
+        kidsAlbum.addImage("Kid Ninja", "images/js-ninja.png");
+        kidsAlbum.addImage("Kid Ninja", "images/js-ninja.png");
+        gallery.render();
+    </script>
+</body>
+</html>

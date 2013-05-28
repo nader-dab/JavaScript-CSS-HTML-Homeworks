@@ -1,0 +1,35 @@
+﻿body {
+}
+
+.image-holder {
+            width: 150px;
+            border: 1px solid black;
+            box-shadow: rgb(128, 128, 128) 2px 2px 2px;
+            border-radius: 5px;
+            display : inline-block;
+            margin: 10px;
+            padding: 10px;
+        }
+.album-holder {
+    width: 60%;
+    border: 1px solid black;
+    box-shadow: rgb(128, 128, 128) 2px 2px 2px;
+    border-radius: 5px;
+    margin: 10px;
+    padding: 10px;
+        
+}
+
+    .album-holder a {
+        display: block;
+        width: 40px;
+        height: 15px;
+        margin: 0 auto;
+        font-size: 18px;
+
+    }
+#divider {
+    height: 1px;
+    width: 95%;
+    background-color: rgb(128, 128, 128);
+}
